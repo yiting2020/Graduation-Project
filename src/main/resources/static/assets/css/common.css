@@ -1,0 +1,79 @@
+.red-star {
+	color: red;
+	margin: 5px;
+	vertical-align: bottom;
+}
+/*add by wangliang 2017-10-30 start*/
+.block-flag:before {
+	content:'块';
+	display:inline-block;
+	background-color:#31d047; //#d0bb31;
+	color:white;
+	padding:0px 2px;
+	margin:3px 3px 3px 0px;
+	font-size:12px;
+}
+.bundled-flag:before {
+	content:'捆';
+	display:inline-block;
+	background-color:#31d047; //#d0bb31;
+	color:white;
+	padding:0px 2px;
+	margin:3px 3px 3px 0px;
+	font-size:12px;
+}
+.child-flag:before {
+	content:'子';
+	display:inline-block;
+	background-color:#31d047; //#d0bb31;
+	color:white;
+	padding:0px 2px;
+	margin:3px 3px 3px 0px;
+	font-size:12px;
+}
+/*add by wangliang 2017-10-30 end*/
+/*add by yangfan 20171112 start*/
+.outPut-flag:before {
+	content:'销';
+	display:inline-block;
+	background-color:#31d047;
+	color:white;
+	padding:0px 2px;
+	margin:3px 3px 3px 0px;
+	font-size:12px;
+}
+/*add by yangfan 20171112 end*/
+
+/*add by wangliang 2017-11-21 start*/
+.return-flag:before {
+	content:'退';
+	display:inline-block;
+	background-color:#ff5555;
+	color:white;
+	padding:0px 2px;
+	margin:3px 3px 3px 0px;
+	font-size:12px;
+}
+/*add by wangliang 2017-11-21 end*/
+/*add by yangfan 20180122 start*/
+.connMonitor-flag:before {
+	content:'监';
+	display:inline-block;
+	background-color:#31d047;
+	color:white;
+	padding:0px 2px;
+	margin:3px 3px 3px 0px;
+	font-size:12px;
+}
+/*add by yangfan 20180122 end*/
+/*add by yangfan 20180207 start*/
+.hideOverflowSpan{
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space:nowrap;
+            width:200px;
+            display:block;
+        }
+/*add by yangfan 20180207 end*/

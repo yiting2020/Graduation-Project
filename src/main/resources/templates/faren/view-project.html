@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>重点项目库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="js/jquery-2.1.1.min.js" th:src="@{assets/viewfive/js/jquery-2.1.1.min.js}"></script>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" th:href="@{assets/images/favicon.ico}">
+
+    <script src="js/echarts.min.js" th:src="@{assets/js/echarts.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{assets/js/china.js}"></script>
+
+    <script src="js/echarts.min.js" th:src="@{assets/js/macarons.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{assets/viewfive/js/echarts.min.js}"></script>
+
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" th:href="@{assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.css" th:href="@{assets/css/icons.css}"  rel="stylesheet" type="text/css" />
+    <link href="../assets/css/metismenu.min.css" th:href="@{assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" th:href="@{assets/css/style.css}" rel="stylesheet" type="text/css" />
+
+    <script src="../assets/js/modernizr.min.js" th:href="@{assets/js/modernizr.min.js}"></script>
+
+</head>
+
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Top Bar Start -->
+    <div class="topbar">
+
+        <!-- LOGO -->
+        <div class="topbar-left" >
+            <a href="index-fr.html" class="logo">
+                        <span>
+                            <!--<img src="../assets/images/logo.png" th:href="@{assets/css/metismenu.min.css}" alt="" height="16">-->
+                        </span>
+                <i>
+                    <img src="../assets/images/logo_sm.png" th:href="@{assets/css/metismenu.min.css}" alt="" height="28">
+                </i>
+            </a>
+        </div>
+
+        <nav class="navbar-custom">
+
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="../assets/images/users/avatar-1.jpg" th:href="@{assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                        <span class="ml-1" th:text="${session.loginuser.username}"><i class="mdi mdi-chevron-down"></i> </span>欢迎您！
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">欢迎 !</h6>
+                        </div>
+
+                        <!-- item-->
+                        <!--<a href="javascript:void(0);" class="dropdown-item notify-item">-->
+                        <!--<i class="fi-head"></i> <span>个人信息</span>-->
+                        <!--</a>-->
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                            <i class="fi-power"></i> <span >注销</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+            </ul>
+
+
+        </nav>
+
+    </div>
+    <!-- Top Bar End -->
+
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="slimscroll-menu" id="remove-scroll">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-thitle">Important</li>
+                    <li>
+                        <a href="index-fr.html" th:href="@{/faren/index-fr}">
+                            <i class="fi-air-play"></i>
+                            <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                            <span> 首页 </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 项目管理 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="gl-tianbao.html" th:href="@{/faren/gl-tianbao}">项目填报</a></li>
+                            <li><a href="gl-weibao.html" th:href="@{/faren/gl-weibao}">未报项目</a></li>
+                            <li><a href="gl-yibao.html" th:href="@{/faren/gl-yibao}">已报项目</a></li>
+                            <li><a href="gl-yibao.html" th:href="@{/faren/gl-shenhe}">审核项目</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-box"></i><span> 项目调度 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="dd-mytask.html" th:href="@{/faren/dd-mytask}">我的调度任务</a></li>
+                            <li><a href="dd-overtask.html" th:href="@{/faren/dd-overtask}">已结项任务</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/faren/ques-tianbao}">问题填报</a></li>
+                            <li><a th:href="@{/faren/ques-list}">问题申请</a></li>
+                            <li><a th:href="@{/faren/ques-handle}">问题处理</a></li>
+                            <li><a th:href="@{/faren/ques-over}">问题结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/frprojectview}">项目总体统计</a></li>
+                            <li><a th:href="@{/frquesview}">项目问题统计</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+    </div>
+    <!-- Left Sidebar End -->
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">项目总体统计</h4>
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                <li class="breadcrumb-item active">统计分析</li>
+                                <li class="breadcrumb-item active">项目总体统计</li>
+                            </ol>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <!--<div class="row">-->
+                    <!--<div class="col-12">-->
+                        <!--<div class="card-box">-->
+                        <!---->
+
+
+
+                       <!---->
+
+                            <!--&lt;!&ndash;<canvas id="transactions-chart" height="350" class="mt-4"></canvas>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!-- end row -->
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="card-box">
+                            <h4 class="header-title">项目类型统计</h4>
+
+                            <div id="echarts_type" style="height: 450px;padding: 0px;position: relative"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card-box">
+                            <h4 class="header-title">项目投资年度情况统计</h4>
+
+                            <div id="echarts_invest" style="height: 450px;padding: 0px;position: relative"></div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="m-t-0 m-b-20 header-title">项目建设性质情况统计</h4>
+
+                            <div id="echarts_buildnature" style="height: 600px"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="m-t-0 m-b-20 header-title">近5年项目开竣工情况统计</h4>
+
+                            <div id="echarts_start" style="height: 600px"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2019 - 2020 © 重点项目库. - Important.com
+        </footer>
+
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+
+<script src="js/jquery-2.1.1.min.js" th:src="@{assets/viewfive/js/jquery-2.1.1.min.js}"></script>
+<script src="js/echarts.min.js" th:src="@{assets/viewfive/js/echarts.min.js}"></script>
+<!--<script src="js/china.js" th:src="@{assets/viewfive/js/china.js}"></script>-->
+<script src="js/frviewproject.js" th:src="@{assets/viewfive/js/frviewproject.js}"></script>
+
+<!-- jQuery  -->
+<script src="../assets/js/jquery.min.js" th:href="@{assets/js/jquery.min.js}"></script>
+<script src="../assets/js/popper.min.js" th:href="@{assets/js/popper.min.js}"></script>
+<script src="../assets/js/bootstrap.min.js" th:href="@{assets/js/bootstrap.min.js}"></script>
+<script src="../assets/js/metisMenu.min.js" th:href="@{assets/js/metisMenu.min.js}"></script>
+<script src="../assets/js/waves.js" th:href="@{assets/js/waves.js}"></script>
+<script src="../assets/js/jquery.slimscroll.js" th:href="@{assets/js/jquery.slimscroll.js}"></script>
+<script src="../plugins/waypoints/lib/jquery.waypoints.min.js" th:href="@{plugins/waypoints/lib/jquery.waypoints.min.js}"></script>
+<script src="../plugins/counterup/jquery.counterup.min.js" th:href="@{plugins/counterup/jquery.counterup.min.js}"></script>
+
+<!-- Chart JS -->
+<script src="../plugins/chart.js/chart.bundle.js" th:href="@{plugins/chart.js/chart.bundle.js}"></script>
+
+<!-- init dashboard -->
+
+<!-- App js -->
+<script src="../assets/js/jquery.core.js" th:href="@{assets/js/jquery.core.js}"></script>
+<script src="../assets/js/jquery.app.js" th:href="@{assets/js/jquery.app.js}"></script>
+
+<script>
+    window.onload=function(){
+        function gettype() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/sumandtype',
+                dataType: 'json',
+                success: function (result) {
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChart1.setOption(
+                        option = {
+                            title: {
+                                // text: '项目类型统计',
+                                // subtext: '纯属虚构',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            },
+                            legend: {
+                                left: 'center',
+                                top: 'bottom',
+                                data: [result[0].name,result[1].name,result[2].name]
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: {show: true},
+                                    dataView: {show: true, readOnly: false},//数据视图
+                                    magicType: {
+                                        show: true,
+                                        type: ['pie', 'funnel']
+                                    },
+                                    // restore: {show: true},
+                                    saveAsImage: {show: true}//保存为图片
+                                }
+                            },
+                            series: [
+                                {
+                                    name: '项目类型及其占比',
+                                    type: 'pie',
+                                    radius: [40, 100],
+                                    center: ['45%', '50%'],
+                                    roseType: 'radius',
+                                    label: {
+                                        show: false
+                                    },
+                                    emphasis: {
+                                        label: {
+                                            show: true
+                                        }
+                                    },
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            formatter: '{b}: {c}({d}%)' //自定义显示格式(b:name, c:value, d:百分比)
+                                        }
+                                    },
+                                    // color:['red','blue','pink'],
+                                    data: result
+                                },
+                                // {
+                                //     name: '面积模式',
+                                //     type: 'pie',
+                                //     radius: [30, 110],
+                                //     center: ['75%', '50%'],
+                                //     roseType: 'area',
+                                //     data:result
+                                // }
+                            ]
+                        }
+
+
+                    );
+
+                }
+
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('echarts_type'),'light');
+        gettype();
+
+
+        function getinvest() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/frprojectinvest',
+                dataType: 'json',
+                success: function (result) {
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChartinvest.setOption(
+
+                        option = {
+                            // tooltip: {
+                            //     trigger: 'axis',
+                            //     axisPointer: {
+                            //         type: 'cross',
+                            //         crossStyle: {
+                            //             color: '#999'
+                            //         }
+                            //     }
+                            // },
+                            // toolbox: {
+                            //     feature: {
+                            //         dataView: {show: true, readOnly: false},
+                            //         magicType: {show: true, type: ['line', 'bar']},
+                            //         restore: {show: true},
+                            //         saveAsImage: {show: true}
+                            //     }
+                            // },
+                            xAxis: {
+                                type: 'category',
+                                axisPointer: {
+                                    type: 'shadow'
+                                },
+                                data: [result[0].name,result[1].name,result[2].name,result[3].name,result[4].name,result[5].name]
+                            },
+                            yAxis: {
+                                type: 'value',
+                                name: '项目数（个）',
+                                // min: 0,
+                                // max: result[10],
+                                color:'black',
+                                interval: 10,
+                                axisLabel: {
+                                    formatter: '{value} '
+                                }
+                            },
+                            minInterval: 1,//标值的最小间隔
+                            series: [{
+                                data: result,
+                                type: 'line',
+                                smooth: true,
+                                color: "#FFAED4",
+                            },
+                                // {
+                                //     data:result,
+                                //     type:'pie',
+                                //     center:['25%',60],
+                                //     radius:25
+                                //
+                                //
+                                // },
+                                {
+                                    data:result,
+                                    type:'bar',
+                                    barWidth:20,//设置柱子宽度，单位为px
+                                    itemStyle: {
+                                        normal: {
+                                            color: function(params) {
+                                                var colorList = ['#fad797',
+                                                    '#59ccf7'
+                                                    ,'#c3b4df',
+                                                    "#72ADFF",
+                                                    "#3CEEC6",
+                                                    "#8AB0D3",
+                                                    "#148EFF",
+                                                    "#FFAED4",];
+                                                return colorList[params.dataIndex]
+                                            }
+                                        }
+                                    },
+                                    label: {
+                                        normal:{
+                                            show: true,//柱子上显示值
+                                            position: 'top',//值在柱子上方显示
+                                            textStyle: {
+                                                color: '#000000',//值得颜色
+                                                fontSize: 16,
+                                            }
+                                        }
+                                    },
+
+                                }
+
+
+                            ]
+                        }
+
+                    );
+
+                }
+
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChartinvest = echarts.init(document.getElementById('echarts_invest'));
+        getinvest();
+        // 使用刚指定的配置项和数据显示图表。
+        // myChart1.setOption(option);
+
+
+
+        function getbuildnature() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/buildnature',
+                dataType: 'json',
+                success: function (result) {
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChart2.setOption(
+                        option = {
+                            title: {
+                                text: '',
+                                subtext: '',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            },
+                            legend: {
+                                left: 'center',
+                                top: 'bottom',
+                                data: [result[0].name,result[1].name,result[2].name,result[3].name,result[4].name, result[5].name,result[6].name,
+                                    result[7].name,result[8].name]
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: {show: true},
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {
+                                        show: true,
+                                        type: ['pie', 'funnel']
+                                    },
+                                    // restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            // toolbox: {
+                            //     feature: {
+                            //         dataView: {show: true, readOnly: false},
+                            //         magicType: {show: true, type: ['line', 'bar']},
+                            //         restore: {show: true},
+                            //         saveAsImage: {show: true}
+                            //     }
+                            // },
+                            graphic:{            //echarts饼图中间放字
+                                type:'text',
+                                left:'center',
+                                top:'center',
+                                z:2,
+                                //  zlevel:10,
+                                style:{
+                                    text:'项目建设性质',
+                                    textAlign:'center',
+                                    fill:'#000',
+                                    font:' 22px 微软雅黑 '
+                                },
+                            },
+                            series: [
+                                {
+                                    name: '',
+                                    type: 'pie',
+                                    radius: [100, 200],
+                                    center: ['50%', '50%'],
+                                    roseType: 'area',
+                                    itemStyle : {
+                                        normal: {
+
+                                            label: {                 //指示到模块的标签文字
+                                                show: true,
+                                                color:'black',
+                                                formatter: '{b} : {c} \n ({d}%)'
+                                            },
+                                            labelLine: {             //指示到模块的标签线
+                                                show: true,
+
+                                            }
+                                        },
+                                    },
+                                    color: ['#fad797',
+                                        '#59ccf7'
+                                        ,'#c3b4df',
+                                        "#72ADFF",
+                                        "#3CEEC6",
+                                        "#8AB0D3",
+                                        "#148EFF",
+                                        "#FFAED4",
+                                        "#FFE4D7",
+                                        "#FFFA0C",
+                                        "#FFCD91",
+                                        "#FF7E82"], //颜色将根据饼图的区域个数循环
+                                    data: result
+                                }
+                            ]
+                        }
+
+
+
+
+                    );
+
+                }
+
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('echarts_buildnature'));
+        getbuildnature();
+
+        function getstart() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/start',
+                dataType: 'json',
+                success: function (result) {
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChart3.setOption(
+                        option = {
+
+                            grid: {
+                                left: '10%',
+                                right: '10%',
+                                bottom: '10%',
+                                containLabel: true
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    // type: 'cross',
+                                    crossStyle: {
+                                        color: '#e4eb9b'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {show: true, type: ['line', 'bar']},
+                                    // restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            legend: {
+                                data: ['开工', '竣工']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    data: ['2016年', '2017年', '2018年', '2019年', '2020年'],
+                                    axisPointer: {
+                                        // type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: '项目数（个）',
+                                    min: 0,
+                                    max: result[10],
+                                    interval: 5,
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+
+                            ],
+                            series: [
+                                {
+                                    name: '开工',
+                                    type: 'bar',
+                                    data: [result[0], result[2],result[4], result[6], result[8]],
+                                    color:"#FFCD91",
+                                },
+                                {
+                                    name: '竣工',
+                                    type: 'bar',
+                                    data: [result[1],result[3], result[5], result[7], result[9]],
+                                    color:'#59ccf7',
+                                },
+                            ]
+                        }
+
+
+                    );
+
+                }
+
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart3 = echarts.init(document.getElementById('echarts_start'),'light');
+        getstart();
+
+
+
+
+
+        function getmap() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/buildplace',
+                dataType: 'json',
+                success: function (result) {
+                    // var min=result[0].value;
+                    // var max=result[0].value;
+                    //
+                    // for(i=0;i<=result.length;i++){
+                    //     if( result[i+1].value<min)
+                    //      min=result[i+1].value;
+                    // }
+                    // console.log(min);
+                    // for(i=0;i<=result.length;i++){
+                    //     if( result[i+1].value>max)
+                    //         max=result[i+1].value;
+                    // }
+                    // console.log(max);
+
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChart.setOption(
+                        option = {
+                            tooltip: {
+                                formatter: function (params, ticket, callback) {
+                                    return params.seriesName + '<br />' + params.name + '：' + params.value
+                                }//数据格式化
+                            },
+                            visualMap: {
+                                min: 0,
+                                max: 10,
+                                left: 'left',
+                                top: 'bottom',
+                                text: ['多', '少'],//取值范围的文字
+                                inRange: {
+                                    color: ['#e0ffff', '#006edd']//取值范围的颜色
+                                },
+                                show: true//图注
+                            },
+                            geo: {
+                                map: 'china',
+                                roam: false,//不开启缩放和平移
+                                zoom: 1.23,//视角缩放比例
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        fontSize: '10',
+                                        color: 'rgba(0,0,0,0.7)'
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        borderColor: 'rgba(0, 0, 0, 0.2)'
+                                    },
+                                    emphasis: {
+                                        areaColor: '#F3B329',//鼠标选择区域颜色
+                                        shadowOffsetX: 0,
+                                        shadowOffsetY: 0,
+                                        shadowBlur: 20,
+                                        borderWidth: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            },
+                            series: [
+                                {
+                                    name: '项目数',
+                                    type: 'map',
+                                    geoIndex: 0,
+                                    data: result
+                                }
+                            ]
+                        }
+
+
+                    );
+
+                }
+
+            })
+        }
+        var myChart = echarts.init(document.getElementById('echarts_buildplace'));
+        getmap();
+        myChart.setOption(option);
+        myChart.on('click', function (params) {
+            alert(params.name);
+        });
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

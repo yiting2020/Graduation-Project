@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>重点项目库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" th:href="@{../assets/images/favicon.ico}">
+
+    <!-- Toastr css -->
+    <link href="../plugins/jquery-toastr/jquery.toast.min.css" th:href="@{plugins/jquery-toastr/jquery.toast.min.css}" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="../../assets/css/bootstrap.min.css" th:href="@{../assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/icons.css" th:href="@{../assets/css/icons.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/metismenu.min.css" th:href="@{../assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/style.css" th:href="@{../assets/css/style.css}" rel="stylesheet" type="text/css" />
+
+    <!--此处引用全局性的css文件-->
+    <link type="text/css" rel="stylesheet" href="../../assets/css/Site.css"th:href="@{../assets/css/Site.css}">
+
+    <link type="text/css" rel="stylesheet" href="../../assets/css/style.css" th:href="@{../assets/css/style.css}">
+
+    <!--此处引用全局性script文件-->
+    <script type="text/javascript" src="../../assets/scripts/jquery-1.12.4.min.js" th:href="@{../assets/scripts/jquery-1.12.4.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.core.min.js"th:href="@{../assets/scripts/UI/ui.core.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/Page/ui.masterpage.js" th:href="@{../assets/scripts/Page/ui.masterpage.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/Page/ui.messagebox.js" th:href="@{../assets/scripts/Page/ui.messagebox.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/jquery.validate.min.js" th:href="@{../assets/scripts/jquery.validate.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.validate.js" th:href="@{../assets/scripts/UI/ui.validate.js}"></script>
+
+    <script type="text/javascript" src="../../assets/scripts/Page/ui.menu.js" th:href="@{../assets/scripts/Page/ui.menu.js}"></script>
+    <link type="text/css" rel="stylesheet" href="../../assets/css/Menu.css" th:href="@{../assets/css/Menu.css}">
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.contentWindow.min.js" th:href="@{../assets/scripts/UI/ui.contentWindow.min.js}"></script>
+    <link type="text/css" rel="stylesheet" href="../../assets/themes/metro/ui.metro.contentWindow.css" th:href="@{../assets/themes/metro/ui.metro.contentWindow.css}">
+
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.columnStyle.min.js" th:href="@{../assets/scripts/UI/ui.columnStyle.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.gridview.min.js" th:href="@{../assets/scripts/UI/ui.gridview.min.js}"></script>
+
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.tools.min.js" th:href="@{../assets/scripts/UI/ui.tools.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.dateChooser.min.js" th:href="@{../assets/scripts/UI/ui.dateChooser.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.contentWindow.min.js" th:href="@{../assets/scripts/UI/ui.contentWindow.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.selectionTree.min.js"th:href="@{../assets/scripts/UI/ui.selectionTree.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.selectionList.min.js" th:href="@{../assets/scripts/UI/ui.selectionList.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/jquery.validate.min.js" th:href="@{../assets/scripts/jquery.validate.min.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.validate.js" th:href="@{../assets/scripts/UI/ui.validate.js}"></script>
+    <script type="text/javascript" src="../../assets/scripts/UI/ui.tabPanel.min.js" th:href="@{../assets/scripts/UI/ui.tabPanel.min.js}"></script>
+
+    <link type="text/css" rel="stylesheet" href="../../assets/themes/metro/ui.metro.tabPanel.css" th:href="@{../assets/themes/metro/ui.metro.tabPanel.css}"/>
+    <link type="text/css" rel="stylesheet" href="../../assets/themes/metro/ui.metro.gridview.css" th:href="@{../assets/themes/metro/ui.metro.gridview.css}">
+    <link type="text/css" rel="stylesheet" href="../../assets/themes/metro/ui.metro.tools.css" th:href="@{../assets/themes/metro/ui.metro.tools.css}">
+    <link type="text/css" rel="stylesheet" href="../../assets/themes/metro/ui.metro.dateChooser.css" th:href="@{../assets/themes/metro/ui.metro.dateChooser.css}">
+    <link type="text/css" rel="stylesheet" href="../../assets/themes/metro/ui.metro.contentWindow.css" th:href="@{../assets/themes/metro/ui.metro.contentWindow.css}">
+    <link type="text/css" href="../../assets/themes/metro/ui.metro.selectionTree.css" th:href="@{../assets/themes/metro/ui.metro.selectionTree.css}" rel="stylesheet">
+    <link type="text/css" href="../../assets/themes/metro/ui.metro.selectionList.css" th:href="@{../assets/themes/metro/ui.metro.selectionList.css}" rel="stylesheet">
+    <style id="GlobalThemeChangeStyle" type="text/css"></style>
+    <!-- 项目全局样式 -->
+    <link type="text/css" rel="stylesheet" href="../../assets/css/Project.css" th:href="@{../assets/css/Project.css}">
+    <!-- 主题色样式 -->
+    <link id="theme" type="text/css" rel="stylesheet" href="../../assets/themes/metro.color/ui.metro.Default.css" th:href="@{../assets/themes/metro.color/ui.metro.Default.css}">
+    <link id="theme" type="text/css" rel="stylesheet" href="../../assets/css/style.css" th:href="@{../assets/css/style.css}">
+
+    <script role="reload" type="text/javascript" src="../../assets/scripts/biz/project-reserves.js" th:href="@{../assets/scripts/biz/project-reserves.js}"></script>
+    <script src="../../assets/js/modernizr.min.js" th:href="@{../assets/js/modernizr.min.js}"></script>
+
+</head>
+
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper" style="overflow-y: scroll">
+
+    <!-- Top Bar Start -->
+    <div class="topbar" style="background: linear-gradient(to top, rgb(87, 194, 1),rgb(87, 194, 1));">
+
+        <!-- LOGO -->
+        <div class="topbar-left" style="background: linear-gradient(to top, rgb(87, 194, 1),rgb(87, 194, 1));">
+            <a href="index-fg.html" class="logo">
+                <!--<span>
+                    <img src="../../assets/images/logo.png" th:href="@{../assets/css/metismenu.min.css}" alt="" height="16">
+                </span>
+                <i>
+                    <img src="../../assets/images/logo_sm.png" th:href="@{../assets/css/metismenu.min.css}" alt="" height="28">
+                </i>-->
+            </a>
+        </div>
+
+        <nav class="navbar-custom" style="background: linear-gradient(to top, rgb(87, 194, 1),rgb(87, 194, 1));">
+
+
+        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="../../assets/images/users/avatar-1.jpg" th:href="@{../assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                        <span class="ml-1" th:text="${session.loginuser.username}"> <i class="mdi mdi-chevron-down"></i> </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">欢迎 !</h6>
+                        </div>
+
+
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                            <i class="fi-power"></i> <span>注销</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+
+                </li>
+            </ul>
+
+        </nav>
+
+    </div>
+    <!-- Top Bar End -->
+
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="slimscroll-menu" id="remove-scroll">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-title">Important</li>
+                    <li>
+                        <a href="index-fg.html" th:href="@{/fagai/index-fg}">
+                            <i class="fi-air-play"></i>
+                            <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                            <span> 首页 </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 项目审核 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="sh-none.html" th:href="@{/fagai/sh-none}">未审核项目</a></li>
+                            <li><a href="sh-over.html" th:href="@{/fagai/sh-over}">已审核项目</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-box"></i> <span> 项目入库 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level nav" aria-expanded="false">
+                            <li><a href="rk-ready.html" th:href="@{/fagai/rk-ready}">预备项目</a></li>
+                            <li><a href="javascript: void(0);" aria-expanded="false">项目库 <span class="menu-arrow"></span></a>
+                                <ul class="nav-third-level nav" aria-expanded="false">
+                                    <li><a href="rk-now.html" th:href="@{/fagai/rk-now}">当前年度</a></li>
+                                    <li><a href="rk-history.html" th:href="@{/fagai/rk-history}">历史年度</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> 项目调度 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="chart-flot.html" th:href="@{/fagai/dd-handle}">项目调度处理</a></li>
+                            <li><a href="chart-flot.html" th:href="@{/fagai/dd-over}">项目调度结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-map"></i> <span> 前期工作事项 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/fagai/qq-handle}">前期工作事项处理</a></li>
+                            <li><a th:href="@{/fagai/alarm-handle}">前期工作事项预警</a></li>
+                            <li><a th:href="@{/fagai/qq-over}">前期工作事项结项</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="wtfg-over.html" th:href="@{/fagai/quesfg-list}">问题待处理</a></li>
+                            <li><a href="wtfg-over.html" th:href="@{/fagai/quesfg-handle}">问题已处理</a></li>
+                            <li><a href="quesfg-display.html" th:href="@{/fagai/quesfg-over}">问题结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/fgprojectview}">项目总体统计</a></li>
+                            <li><a th:href="@{/fgproview}">前期工作统计</a></li>
+                            <li><a th:href="@{/fgquesview}">问题督办统计</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">问题已处理</h4>
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                <li class="breadcrumb-item"><a href="#">问题督办</a></li>
+                                <li class="breadcrumb-item active">问题已处理</li>
+                            </ol>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card-box" style="margin-bottom: 0px;height: 444px;">
+                            <div id="projectToolbar" class="toolbar" style="height: 60px; position: relative; background-color: white">
+                                <!--<ul class="tools">
+                                    <li>
+                                        <span>问题名称</span>
+                                        <input id="quesName" type="text">
+                                    </li>
+                                    <li>
+                                        <span>项目问题类型</span>
+                                        <select id="industry" name="qtype" type="text" readonly="readonly" class="select-text base-info-required" >
+                                            <option></option>
+                                            <option value="项目信息">项目信息</option>
+                                            <option value="项目调度">项目调度</option>
+                                            <option value="前期工作事项">前期工作事项</option>
+                                        </select>
+                                    </li>
+
+                                </ul>-->
+                                <ul class="tools" style="float:right">
+                                    <li>
+                                        <!--<span>查询条件</span>-->
+                                        <input style="width: 280px;height:28px " id="quesName" placeholder="请输入查询条件，如：问题名称" name="projectName" type="text">
+                                    </li>
+                                    <li>
+                                        <button id="queryProjectBtn" class="tool-button button-highlight">
+                                            <i class="fa fa-search"></i> <span>查询</span>
+                                        </button>
+                                    </li>
+
+                                </ul>
+                                <br style="clear:both;">
+                            </div>
+                            <div id="projectView" class="grid-view" style=" width: 100%;height:85%;">
+                                <div class="grid-head" style="width: 100%;height:90%;overflow:auto;">
+                                    <form method="get" th:action="@{/fagai/quesfg-handle}" th:object="${ques}">
+                                        <table class="table-head" cellspacing="0" cellpadding="0" style="display: block;">
+                                            <colgroup>
+                                                <col span="1" style="width:29px;">
+                                                <col span="1" style="width:270px;">
+                                                <col span="3" style="width: 250px">
+                                            </colgroup>
+                                            <tr>
+                                                <th style="text-align: center;"><!--<input class="gridview-check-all" type="checkbox" name="PROJECT_ID_all">--></th>
+                                                <!--<th>问题id</th>-->
+                                                <th>问题名称</th>
+                                                <th>问题类型</th>
+                                                <th>处理状态</th>
+                                                <th>问题填报人</th>
+                                            </tr>
+
+                                            <tr th:each="qlist : ${qlist}">
+                                                <th style="text-align: center;">
+                                                    <input class="gridview-check-all" type="checkbox" name="select" th:attr="data-id=${qlist.qid}">
+                                                </th>
+                                                <!--<th th:text="${qlist.qid}"></th>-->
+                                                <th>
+                                                    <a th:href="@{/fagai/quesfg-fix(qid=${qlist.qid})}" th:text="${qlist.qname}"></a>
+
+                                                </th>
+                                                <th th:text="${qlist.qtype}"></th>
+                                                <th th:text="${qlist.qstatus}"></th>
+                                                <th th:text="${qlist.qperson}"></th>
+
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                                <div style="float: left;margin-top: 15px " class="dataTables_info" id="datatable_info" role="status" aria-live="polite" th:text="'当前第：'+ ${iPagew.getCurrent()}+' 页，总共：'+${iPagew.getPages()}+' 页，总共：'+${iPagew.getTotal()}+' 条记录'"></div>
+                                <div style="float:right;margin-top: 6px" class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous" id="datatable_first">
+                                            <a th:href="'/fagai/quesfg-handle?pageNum=1'" th:text="首页" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link"></a>
+                                        </li>
+                                        <li th:if="${iPagew.getCurrent()}" class="paginate_button page-item previous" id="datatable_previous">
+                                            <a th:href="'/fagai/quesfg-handle?pageNum=' + ${iPagew.getCurrent()-1}" th:text="上一页" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link"></a>
+                                        </li>
+                                        <li th:each="pageNum:${#numbers.sequence(1, iPagew.getPages())}" class="paginate_button page-item active"  >
+                                            <a th:href="'/fagai/quesfg-handle?pageNum=' + ${pageNum}" th:text="${pageNum}" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link"></a>
+                                        </li>
+                                        <li th:if="${iPagew.getCurrent()}" class="paginate_button page-item next" id="datatable_next">
+                                            <a th:href="'/fagai/quesfg-handle?pageNum=' + ${iPagew.getCurrent()+1}" th:text="下一页" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link"></a>
+                                        </li>
+
+                                        <li  class="paginate_button page-item next" id="datatable_last">
+                                            <a th:href="'/fagai/quesfg-handle?pageNum=' + ${iPagew.getPages()}" th:text="尾页" aria-controls="datatable" data-dt-idx="7" tabindex="0" class="page-link"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <input type="hidden" id="storeLevel" value="0">
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+            </div><!-- container -->
+        </div><!-- content -->
+
+        <footer class="footer text-right">
+            2019 - 2020 © 重点项目库. - Important.com
+        </footer>
+
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+<script>
+    function apply() {
+        var checkbox_list = document.querySelectorAll('[name="select"]');
+        var id_list = [];
+        for(var i = 0;i < checkbox_list.length;i++){
+            if(checkbox_list[i].checked){
+                // 取符合条件的checkbox的data-id属性,并存到id_list里
+                id_list.push(checkbox_list[i].getAttribute("data-id"))
+            }
+        }
+        console.log("勾选项id:", id_list)
+        var xhr = new XMLHttpRequest();
+        xhr.open("post","/fagai/quesfg-handle",true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(id_list));
+        window.location.href="/fagai/quesfg-list"
+    }
+</script>
+
+
+<!-- jQuery  -->
+<script src="../../assets/js/jquery.min.js" th:href="@{../assets/js/jquery.min.js}"></script>
+<script src="../../assets/js/popper.min.js" th:href="@{../assets/js/popper.min.js}"></script>
+<script src="../../assets/js/bootstrap.min.js" th:href="@{../assets/js/bootstrap.min.j}"></script>
+<script src="../../assets/js/metisMenu.min.js" th:href="@{../assets/js/metisMenu.min.js}"></script>
+<script src="../../assets/js/waves.js" th:href="@{../assets/js/waves.js}"></script>
+<script src="../../assets/js/jquery.slimscroll.js" th:href="@{../assets/js/jquery.slimscroll.js}"></script>
+
+<!-- Toastr js -->
+<script src="../plugins/jquery-toastr/jquery.toast.min.js" th:href="@{plugins/jquery-toastr/jquery.toast.min.js}" type="text/javascript"></script>
+<script src="../../assets/pages/jquery.toastr.js" th:href="@{../assets/pages/jquery.toastr.js}" type="text/javascript"></script>
+
+<!-- App js -->
+<script src="../../assets/js/jquery.core.js" th:href="@{../assets/js/jquery.core.js}"></script>
+<script src="../../assets/js/jquery.app.js" th:href="@{../assets/js/jquery.app.js}"></script>
+
+</body>
+</html>

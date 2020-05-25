@@ -1,0 +1,791 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8" />
+    <title>重点项目库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" th:href="@{../assets/images/favicon.ico}">
+
+    <!-- App css -->
+    <link href="../../assets/css/bootstrap.min.css" th:href="@{../assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/icons.css" th:href="@{../assets/css/icons.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/metismenu.min.css" th:href="@{../assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/style.css" th:href="@{../assets/css/style.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/themes/metro/ui.metro.dateChooser.css" th:href="@{../assets/themes/metro/ui.metro.dateChooser.css}" rel="stylesheet" type="text/css" />
+    <link id="theme" type="text/css" rel="stylesheet" href="../../assets/themes/metro.color/ui.metro.Default.css" th:href="@{../assets/themes/metro.color/ui.metro.Default.css}">
+    <script src="../../assets/js/modernizr.min.js" th:href="@{../assets/js/modernizr.min.js}"></script>
+    <style type="text/css">
+        table thead, tbodytr{
+            display:table;
+            table-layout:fixed;
+        }
+        table{
+
+            display: block;
+            overflow-y:auto;
+            overflow-x:auto;
+        }
+
+
+        /*=========基本信息表单==========*/
+        /* 表格布局样式 */
+        #baseInfoForm table {
+            width: 100%;
+        }
+        #baseInfoForm td {
+            width: 50%;
+        }
+
+        /* 表单元素样式 */
+        #baseInfoForm input[type="text"] {
+            width: 360px;
+            height: 28px;
+            line-height: 28px;
+        }
+
+        #baseInfoForm input[type="text"][disabled] {
+            background-color: #E1E1E1 !important;
+        }
+
+        #baseInfoForm select {
+            width: 364px;
+            height: 30px;
+        }
+
+        #baseInfoForm textarea {
+            width: 760px;
+            height: 90px;
+        }
+
+        #baseInfoForm label.label-text {
+            line-height: 30px;
+            color: #666666;
+        }
+
+        /*=========其他信息表单==========*/
+        /* 表格布局样式 */
+
+        #otherInfoForm table {
+            width: 100%;
+        }
+        #otherInfoForm td {
+            width: 50%;
+        }
+
+        /* 表单元素样式 */
+        #otherInfoForm input[type="text"] {
+            width: 360px;
+            height: 28px;
+            line-height: 28px;
+        }
+
+        #otherInfoForm input[type="text"][disabled] {
+            background-color: #F1F1F1 !important;
+        }
+
+        #otherInfoForm select {
+            width: 364px;
+            height: 30px;
+        }
+
+        #otherInfoForm textarea {
+            width: 760px;
+            height: 90px;
+        }
+
+        #otherInfoForm label.label-text {
+            line-height: 30px;
+            color: #666666;
+        }
+
+        /*=========地方指标表单==========*/
+        /* 表格布局样式 */
+
+        #areaItemInfoForm table {
+            width: 70%;
+        }
+        #areaItemInfoForm td {
+            width: 50%;
+        }
+        #areaItemInfoForm input[type="text"] {
+            width: 360px;
+            height: 28px;
+            line-height: 28px;
+        }
+        #areaItemInfoForm textarea {
+            width: 760px;
+            height: 90px;
+        }
+        /* 表单元素样式 */
+        #areaItemInfoForm select {
+            width: 364px;
+            height: 30px;
+        }
+
+        #areaItemInfoForm label.label-text {
+            line-height: 30px;
+            color: #666666;
+        }
+
+        /*=========报送项目面板==========*/
+        #submitProjectForm th {
+            font-weight: normal;
+            text-align: right;
+            width: 100px;
+        }
+
+        #submitProjectForm td {
+            width: 290px;
+        }
+
+        #submitProjectForm input[type="text"] {
+            height: 28px;
+            line-height: 28px;
+            width: 260px;
+        }
+
+        /*=========底部按钮面板==========*/
+        .bottom-bar-panel {
+            position: relative;
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+        }
+
+        .bottom-bar-panel button {
+            cursor: pointer;
+            width: 120px;
+            height: 36px;
+            margin-left: 10px;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .bottom-bar-panel .button-panel {
+            position: absolute;
+            right: 20px;
+            top: 0px;
+            height: 100%;
+            width: auto;
+        }
+
+        .bottom-bar-panel .input-desc {
+            width: 880px;
+            margin: 0px auto;
+        }
+
+
+        /*.right-checkbox {*/
+        /*display: block;*/
+        /*width: 14px;*/
+        /*height: 14px;*/
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*bottom: 0;*/
+        /*right: 4px;*/
+        /*margin: auto 0;*/
+        /*}*/
+        td {
+            position: relative;
+        }
+        .line{
+            display: inline-block;
+            line-height: 20px;
+        }
+        #basicInfo .xtit{
+            font-size: 16px;
+            color: #306599;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 14px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        #basicInfo .xtit:before {
+            content: '';
+            position: absolute;
+            width:3px;
+            height:16px;
+            background: #306599;
+            left: 6px;
+            top: 3px;
+        }
+        #basicInfo td {
+            border: 1px solid #cdcdcd;
+            padding: 8px 23px;
+        }
+        #basicInfo input:not([type]) {
+            width: 100%;
+            box-sizing: border-box;
+            color: #5b5b5b;
+            padding: 5px 9px;
+            text-overflow: ellipsis;
+            border: 1px solid #a4b5c9;
+        }
+        #basicInfo .right-checkbox {
+            margin-left:0;
+        }
+        #basicInfo table {
+            background: #f5f5f5;
+        }
+        #basicInfo table b{
+            display: inline-block;
+            margin-bottom: 3px;
+        }
+        #jianguanpingtai {
+            color:#000;
+        }
+        #pingtai {
+            margin-bottom: 20px;
+        }
+        .content-window {
+            background:#fff;
+        }
+        #pingtai {
+            font-size: 16px;
+        }
+        #checkAll {
+            vertical-align: -1px;
+            margin-right: 6px;
+            margin-left: 0;
+        }
+        #donttongbu,#tongbu{
+            background: #346ea3;
+            color: #fff;
+            width:84px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 2px;
+            border: none;
+            margin-left: 10px;
+        }
+        #kppPreWorkInfoBody .line {
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        #kppPreWorkInfoBody td {
+            padding: 8px 10px;
+            text-align: left;
+            overflow: hidden;
+        }
+        .prework-header th {
+            padding: 8px 0;
+            line-height: 20px;
+            border: 1px solid #cdcdcd;
+            background: rgb(245,245,245);
+        }
+        #kppPreWorkInfoBody .preWorkTr2:nth-of-type(even){
+            background: white;
+        }
+        /*.bjzt:before {*/
+        /*display: inline-block;*/
+        /*content:attr(bjzt);*/
+        /*width:20px;*/
+
+        /*height:20px;*/
+        /*color: red;*/
+        /*}*/
+        #prekan {
+            height: 27px;
+            width: 96px;
+            box-sizing: border-box;
+            display: inline-block;
+            color: #306599;
+            text-decoration: none;
+            line-height: 27px;
+            padding-right: 12px;
+            text-align: right;
+            margin: 0 15px 0 10px;
+        }
+        #neirong{
+            display: none;
+        }
+        .statuTag {
+            display: inline-block;
+            color: #d7a9a9;
+            border: 1px solid #d7a9a9;
+            border-radius: 3px;
+            line-height: 12px;
+            vertical-align: middle;
+            padding: 3px 9px 1px 9px;
+            margin-right: 10px;
+            margin-top: -3px;
+            text-align: center;
+        }
+        .statuTag .f8{
+            margin: 0 -20px;
+        }
+        .f8 {
+            transform: scale(0.66666667);
+        }
+
+        .selectDiv2{
+            width:335px;
+            float:left;
+            font-family:simsun,Verdana,Geneva,sans-serif;
+            color:#333333;
+            vertical-align:middle;
+            position: relative;
+        }
+        .selectDiv2 h6{
+            font-size:14px;
+            line-height:22px;
+            text-indent:10px;
+            padding:4px;
+            background-color:#f0f0f0;
+            border:1px solid #cdcdcd;
+        }
+        .selectDiv2 .blueBtn{
+            padding:0px 7px;
+            display:block;
+            font-family:simsun,Verdana,Geneva,sans-serif;
+            margin:0px auto;
+            margin-top:5px;
+        }
+        .selectDiv2 h6 span{
+            font-size:12px;
+            float:right;
+        }
+        .selectDiv2 .selectDiv2_span{
+            margin-right:23px;
+        }
+        .selectDiv2 .ulStyle,.selectDiv2 .treeStyle{
+            padding:0px 10px;
+            border:#cccccc 1px solid;
+            height:438px;
+            width: 390px;
+            overflow-x:auto;
+            overflow-y:auto;
+        }
+        .selectDiv2 .ulStyle{
+            overflow-x:auto;
+        }
+        .selectDiv2 .ulStyle li span{
+            float:right;
+        }
+        .button {
+            min-width: 0px;
+        }
+        .ztree li span.button.chk {
+            width:14px !important;
+            height:14px !important;
+            margin:0 4px 0 0 !important;
+            cursor: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Begin page -->
+<div id="wrapper" style="overflow-y: scroll;height: 100%">
+
+    <!-- Top Bar Start -->
+    <div class="topbar">
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="index-fr.html" class="logo">
+                <!--<span>
+                    <img src="../../assets/images/logo.png" th:href="@{../assets/images/logo.png}" alt="" height="16">
+                </span>
+                <i>
+                    <img src="../../assets/images/logo_sm.png" th:href="@{../assets/images/logo_sm.png}" alt="" height="28">
+                </i>-->
+            </a>
+        </div>
+
+        <nav class="navbar-custom">
+
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="../../assets/images/users/avatar-1.jpg" th:href="@{../assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                        <span class="ml-1" th:text="${session.loginuser.username}"> <i class="mdi mdi-chevron-down"></i> </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">欢迎 !</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                            <i class="fi-power"></i> <span>注销</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+    <!-- Top Bar End -->
+
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="slimscroll-menu" id="remove-scroll">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-thitle">Important</li>
+                    <li>
+                        <a href="index-fr.html" th:href="@{/faren/index-fr}">
+                            <i class="fi-air-play"></i>
+                            <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                            <span> 首页 </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 项目管理 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="gl-tianbao.html" th:href="@{/faren/gl-tianbao}">项目填报</a></li>
+                            <li><a href="gl-weibao.html" th:href="@{/faren/gl-weibao}">未报项目</a></li>
+                            <li><a href="gl-yibao.html" th:href="@{/faren/gl-yibao}">已报项目</a></li>
+                            <li><a href="gl-yibao.html" th:href="@{/faren/gl-shenhe}">审核项目</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-box"></i><span> 项目调度 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="dd-mytask.html" th:href="@{/faren/dd-mytask}">我的调度任务</a></li>
+                            <li><a href="dd-overtask.html" th:href="@{/faren/dd-overtask}">已结项任务</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/faren/ques-tianbao}">问题填报</a></li>
+                            <li><a th:href="@{/faren/ques-list}">问题申请</a></li>
+                            <li><a th:href="@{/faren/ques-handle}">问题处理</a></li>
+                            <li><a th:href="@{/faren/ques-over}">问题结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/frprojectview}">项目总体统计</a></li>
+                            <li><a th:href="@{/frquesview}">项目问题统计</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">调度详情展示</h4>
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                <li class="breadcrumb-item"><a href="#">项目调度</a></li>
+                                <li class="breadcrumb-item active">调度详情展示</li>
+                            </ol>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <div id="tabBodyPanel" class="tab-body-panel">
+                                <div id="inputTab" class="tab-body" style="left: 2350px; height: 604px; transform: translateZ(0px);">
+                                    <form id="implForm" method="post" th:action="@{/faren/dispatch-page}" th:object="${dispa}" >
+                                        <dl class="fold-panel" style="width: 1080px; margin-left: auto;margin-right: auto; position:relative;">
+                                            <dt class="fold-panel-title">本期调度填报人</dt>
+                                            <dd>
+                                                <table cellpadding="0" cellspacing="0" border="0" class="base-info">
+                                                    <colgroup>
+                                                        <col style="width:240px;">
+                                                        <col style="width:240px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label>姓名</label>
+                                                        </td>
+
+                                                        <td style="padding-left:16px;">
+                                                            <label>工作单位</label>
+                                                        </td>
+
+                                                        <td style="padding-left:16px;">
+                                                            <label>手机</label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input id="name" th:field="*{name}" name="name" type="text" value="" >
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <input id="unit" th:field="*{unit}" name="unit" type="text" value="" >
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <input id="mobilephone" th:field="*{mobilephone}" name="mobilephone" type="text" value="">
+                                                        </td>
+                                                        <td style="display: none">
+                                                            <label class="label-text">项目调度id<span class="red-color">*</span></label>
+                                                            <br />
+                                                            <input  th:field="*{did}" name="proName" class="base-info-required" type="text" />
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </dd>
+
+                                            <dt class="fold-panel-title">实施信息</dt>
+                                            <dd>
+                                                <table cellpadding="0" cellspacing="0" border="0" class="base-info">
+                                                    <colgroup>
+                                                        <col style="width:240px;">
+                                                        <col style="width:240px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td ><label>实际开工时间</label></td>
+                                                        <td style="padding-left:16px;"><label>实际竣工时间</label></td>
+                                                        <td style="padding-left:16px;"><label>项目未开工原因</label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td ><input id="startTime" th:field="*{starttime}" type="date" name="startTime"  ></td>
+                                                        <td style="padding-left:16px;"><input id="endTime" th:field="*{endtime}" type="date" name="endTime"  ></td>
+                                                        <td style="padding-left:16px;"><input id="reason" th:field="*{reason}" name="resaon" type="text" ></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </dd>
+                                            <dd>
+                                                <table cellpadding="0" cellspacing="0" border="0" class="base-info">
+                                                    <colgroup>
+                                                        <col style="width:240px;">
+                                                        <col style="width:240px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td ><label>招投标形式<span class="red-color">*</span></label></td>
+                                                        <td style="padding-left: 16px"><label>建设单位</label></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <select id="zbType" th:field="*{zbtype}" name="zbType" class="base-info-required" style="width: 174px;height: 28px">
+                                                                <option value=""></option>
+                                                                <option value="公开招标">公开招标</option>
+                                                                <option value="邀请招标">邀请招标</option>
+                                                                <option value="不招标">不招标</option>
+                                                            </select>
+
+                                                        </td>
+                                                        <td style="padding-left: 16px">
+                                                            <input id="buildUnit" th:field="*{buildunit}" name="buidUnit" type="text" value="" >
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </dd>
+                                            <dt class="fold-panel-title">进度详细信息</dt>
+                                            <dd>
+                                                <table cellpadding="0" cellspacing="0" border="0" class="base-info">
+                                                    <colgroup>
+                                                        <col style="width:240px;">
+                                                        <col style="width:240px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="info-name"><label>任务期号</label></td>
+                                                        <td id="imageProgress1" style="padding-left:16px;"><label>形象进度</label></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="info-readonly ssw">
+                                                            <input id="reportNum" th:field="*{reportnum}" name="reportNum" type="text" >
+                                                        </td>
+
+                                                        <td id="imageProgress2"  style="padding-left:16px;">
+                                                            <select id="imageProgress" th:field="*{imageprogress}" name="imageProgress" type="text" style="width: 174px;height: 28px;" >
+                                                                <option value=""></option>
+                                                                <option value="工程类">工程类</option>
+                                                                <option value="非工程类">非工程类</option>
+                                                            </select>
+                                                        </td>
+                                                        <td class="info-readonly ssw">
+                                                            <input id="did" th:field="*{did}" style="display: none" name="reportNum" type="text" >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>年度建设内容</label>
+                                                            <span class="red-color">*</span>
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <label>问题及建议 </label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <textarea id="buildContent" th:field="*{buildcontent}" title="内容长度不超过100字" name="buidContent">1</textarea>
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <textarea id="suggesions" th:field="*{suggesions}" name="suggesions"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>日常监管直接责任单位</label>
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <label>投资计划调整情况</label>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <input id="directDept" th:field="*{directdept}" name="directDept" type="text" value="xxx单位" >
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <select id="investPlanAdjust" th:field="*{investplanadjust}" name="investPlanAdjust" style="width: 174px;height: 28px">
+                                                                <option value=""></option>
+                                                                <option value="不调整">不调整</option>
+                                                                <option value="已调整">已调整</option>
+                                                                <option value="准备调整">准备调整</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <label>政府督查机构联系人</label>
+                                                        </td>
+
+                                                        <td style="padding-left:16px;">
+                                                            <label>联系方式（电话）</label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input id="inspectName" th:field="*{inspectname}" name="inspectName" type="text" value="" >
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <input id="inspectPhone" th:field="*{inspectphone}" name="inspectPhone" type="text" value="" >
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>发改部门联系人</label>
+                                                        </td>
+
+                                                        <td style="padding-left:16px;">
+                                                            <label>联系方式（电话）</label>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input id="inspectName1" th:field="*{inspectname1}" name="inspectName" type="text" value="">
+                                                        </td>
+                                                        <td style="padding-left:16px;">
+                                                            <input id="inspectPhone1" th:field="*{inspectphone1}" name="inspectPhone" type="text" value="" >
+                                                        </td>
+                                                    </tr>
+                                                    </tbody></table>
+                                            </dd>
+
+                                        </dl>
+                                        <input type="submit" value="提交" class="submit_btn1"/>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end row -->
+
+
+                </div>
+
+                <!-- container -->
+
+            </div> <!-- content -->
+
+            <footer class="footer text-right">
+                2019 - 2020 © 重点项目库. - Important.com
+            </footer>
+
+        </div>
+
+
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+
+
+    <!-- jQuery  -->
+
+</div>
+</body>
+<!-- jQuery  -->
+<script src="../../assets/js/jquery.min.js" th:href="@{../assets/js/jquery.min.js}"></script>
+<script src="../../assets/js/popper.min.js" th:href="@{../assets/js/popper.min.js}"></script>
+<script src="../../assets/js/bootstrap.min.js" th:href="@{../assets/js/bootstrap.min.j}"></script>
+<script src="../../assets/js/metisMenu.min.js" th:href="@{../assets/js/metisMenu.min.js}"></script>
+<script src="../../assets/js/waves.js" th:href="@{../assets/js/waves.js}"></script>
+<script src="../../assets/js/jquery.slimscroll.js" th:href="@{../assets/js/jquery.slimscroll.js}"></script>
+
+<!-- App js -->
+<script src="../../assets/js/jquery.core.js" th:href="@{../assets/js/jquery.core.js}"></script>
+<script src="../../assets/js/jquery.app.js" th:href="@{../assets/js/jquery.app.js}"></script>
+</html>

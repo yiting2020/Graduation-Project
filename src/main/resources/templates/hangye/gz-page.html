@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>重点项目库</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico" th:href="@{../assets/images/favicon.ico}">
+        <!-- Sweet Alert css -->
+        <link href="../plugins/sweet-alert/sweetalert2.min.css" th:href="@{plugins/sweet-alert/sweetalert2.min.css}" rel="stylesheet" type="text/css" />
+        <!-- App css -->
+        <link href="../../assets/css/bootstrap.min.css" th:href="@{../assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+        <link href="../../assets/css/icons.css" th:href="@{../assets/css/icons.css}"  rel="stylesheet" type="text/css" />
+        <link href="../../assets/css/metismenu.min.css" th:href="@{../assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+        <link href="../../assets/css/style.css" th:href="@{../assets/css/style.css}" rel="stylesheet" type="text/css" />
+
+
+        <style type="text/css">
+            /*=========前期工作表单==========*/
+            /* 表格布局样式 */
+            #preworkInfoForm .prework-table {
+                border-left: solid 1px #AAAAAA;
+                border-top: solid 1px #AAAAAA;
+            }
+
+            #preworkInfoForm th {
+                width: 130px;
+                padding: 0px;
+                height: 29px;
+                line-height: 29px;
+                font-weight: normal;
+                white-space: nowrap;
+                text-align: left;
+                overflow: hidden;
+                border-bottom: solid 1px #AAAAAA;
+                border-right: solid 1px #AAAAAA;
+            }
+
+            #preworkInfoForm th span {
+                margin-left: 5px;
+            }
+
+            tr.prework-header td,
+            tr.prework-header th {
+                text-align: center !important;
+                background-color: rgb(245,245,245);
+            }
+
+            #preworkInfoForm td {
+                width: 90px;
+                padding: 0px;
+                height: 29px;
+                line-height: 20px;
+                font-weight: normal;
+                text-align: left;
+                border-bottom: solid 1px #AAAAAA;
+                border-right: solid 1px #AAAAAA;
+            }
+
+            #preworkInfoForm td.length {
+                width: 160px;
+            }
+
+            #preworkInfoForm td.short {
+                width: 120px;
+            }
+
+            #preworkInfoForm input[type="text"] {
+                border: none 0px;
+                height: 30px;
+                padding: 0px 3px;
+            }
+
+            #preworkInfoForm td.length input[type="text"] {
+                width: 154px;
+            }
+
+            #preworkInfoForm td.short input[type="text"] {
+                width: 114px;
+            }
+
+            #preworkInfoForm select {
+                width: 100%;
+                height: 30px;
+                border: none 0px;
+            }
+
+            /* 覆盖日期选择控件样式 */
+            input.date-text {
+                width: 120px !important;
+                padding-right: 24px !important;
+                background-position:right -48px;
+            }
+
+            /*input.dateChooser-clear {*/
+            /*background-position: right -141px !important;*/
+            /*}*/
+
+            div.date-panel div.week-panel th {
+                text-align: center !important;
+                border: 0px none;
+            }
+
+            div.date-panel div.week-panel th {
+                width: 30px !important;
+                height: 24px !important;
+                line-height: 24px !important;
+                border: 0px none !important;
+            }
+
+            div.calendar-panel div.set-year-panel td {
+                padding:0px !important;
+                width: 42px !important;
+                height: 24px !important;
+                line-height: 24px !important;
+                text-align: center !important;
+                cursor: pointer !important;
+                border: 0px none !important;
+            }
+
+            div.calendar-panel div.set-month-panel td {
+                padding:0px !important;
+                width: 52px !important;
+                border: 0px none !important;
+                height: 24px !important;
+                line-height: 24px !important;
+                text-align: center !important;
+                cursor: pointer;
+            }
+            div.calendar-panel div.set-date-panel{
+                z-index: 999;
+            }
+            div.date-panel div.days-panel td {
+                width: 30px !important;
+                height: 24px !important;
+                padding: 0px !important;
+                text-align: center !important;
+                cursor: pointer !important;
+                border: none 0px !important;
+            }
+        </style>
+
+    </head>
+
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar" style="background: linear-gradient(to top, #e8c66f, #f1d914);" >
+
+                <!-- LOGO -->
+                <div class="topbar-left" style="background: linear-gradient(to top,#e8c66f, #f1d914);" >
+                    <a href="index-hy.html" class="logo">
+                        <!--<span>
+                            <img src="../../assets/images/logo.png" th:href="@{../assets/images/logo.png}" alt="" height="16">
+                        </span>
+                        <i>
+                            <img src="../../assets/images/logo_sm.png" th:href="@{../assets/images/logo_sm.png}" alt="" height="28">
+                        </i>-->
+                    </a>
+                </div>
+
+                <nav class="navbar-custom" style="background: linear-gradient(to top, #e8c66f, #f1d914);" >
+
+                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="false" aria-expanded="false">
+                                <img src="../../assets/images/users/avatar-1.jpg" th:href="@{../assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                                <span class="ml-1" th:text="${session.loginuser.username}"> <i class="mdi mdi-chevron-down"></i> </span>欢迎您!
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h6 class="text-overflow m-0">欢迎 !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                                    <i class="fi-power"></i> <span>注销</span>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect">
+                                <i class="dripicons-menu"></i>
+                            </button>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="slimscroll-menu" id="remove-scroll">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu" id="side-menu">
+                            <li class="menu-title">Important</li>
+                            <li>
+                                <a href="index-hy.html" th:href="@{/hangye/index-hy}">
+                                    <i class="fi-air-play"></i>
+                                    <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                                    <span> 首页 </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-map"></i> <span> 前期工作事项 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a th:href="@{/hangye/gz-list}">前期工作事项清单</a></li>
+                                    <li><a th:href="@{/hangye/gz-alarm}">前期工作事项预警</a></li>
+                                    <li><a th:href="@{/hangye/gz-over}">前期工作事项结项</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a th:href="@{/hangye/queshy-tianbao}">问题填报</a></li>
+                                    <li><a th:href="@{/hangye/queshy-list}">问题申请</a></li>
+                                    <li><a th:href="@{/hangye/queshy-handle}">问题处理</a></li>
+                                    <li><a th:href="@{/hangye/queshy-over}">问题结项</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a th:href="@{/hyproview}">前期工作事项统计</a></li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title float-left">前期工作填报</h4>
+
+                                    <ol class="breadcrumb float-right">
+                                        <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                        <li class="breadcrumb-item"><a href="#">前期工作管理</a></li>
+                                        <li class="breadcrumb-item active">前期工作填报</li>
+                                    </ol>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box">
+                                    <h3 class="m-t-0 header-title"><b>前期工作事项</b></h3>
+                                    <br/>
+
+                                    <div class="table-responsive">
+                                        <form method="post" th:action="@{/hangye/gz-page}" th:object="${proInfo}">
+                                            <table id="mainTable" class="table table-striped m-b-0" style="border: 1px solid #f2f2f2">
+                                                <thead>
+                                                    <tr>
+                                                        <th><span>审批事项（要件）</span></th>
+                                                        <th><span>批复单位</span></th>
+                                                        <th><span>批复时间</span></th>
+                                                        <th><span>批复文件标题</span></th>
+                                                        <th><span>批复文号</span></th>
+                                                        <th><span>批复状态</span></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                <tr>
+                                                    <th nowrap="nowrap">
+                                                        <span>建设项目用地预审</span>
+                                                        <input id="proWork_A00003" type="hidden" class="prework-item" value="A00003" />
+                                                    </th>
+                                                    <td style="display: none">
+                                                        <label class="label-text">前期事项id<span class="red-color">*</span></label>
+                                                        <br />
+                                                        <input  th:field="*{proid}" name="proName" class="base-info-required" type="text" />
+                                                    </td>
+                                                    <!-- 批复单位 :V23-->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none;background-color: #f2f2f2" th:field="*{pioland}" type="text" name="prework-item-org" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复时间:T04 -->
+                                                    <td class="short planApproveTime">
+                                                        <input  type="date" style="border: none;background-color: #f2f2f2" th:field="*{pdland}" name = "preworkdate" />
+                                                    </td>
+                                                    <!-- 批复文件标题：V24  -->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none;background-color: #f2f2f2" th:field="*{pifland}" type="text" name="prework-item-fileTile" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复文号:V25 -->
+                                                    <td class="length pifufileNo">
+                                                        <input class="prework-item prework-item-fileNo" style="border: none;background-color: #f2f2f2" th:field="*{pifnland}" type="text" name="prework-item-fileNo" maxlength="50" />
+                                                    </td>
+                                                    <!-- 批复状态 :C08-->
+                                                    <td class="short">
+                                                        <select class="prework-item" style="border: none;background-color: #f2f2f2" th:field="*{psland}">
+                                                            <option value=""></option>
+
+                                                            <option value="已办结">已办结</option>
+
+                                                            <option value="办理中">办理中</option>
+
+                                                        </select>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th nowrap="nowrap">
+                                                        <span>选址意见书</span>
+                                                        <input id="proWork_A00004" type="hidden" class="prework-item" value="A00004" />
+                                                    </th>
+                                                    <!-- 批复单位 :V23-->
+                                                    <td class="length">
+                                                        <input style="border: none" class="prework-item" th:field="*{pioaddress}" type="text" name="prework-item-org" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复时间:T04 -->
+                                                    <td class="short planApproveTime">
+                                                        <input style="border: none" type="date" th:field="*{pdaddress}" name = "preworkdate" />
+                                                    </td>
+                                                    <!-- 批复文件标题：V24  -->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none" th:field="*{pifaddress}" type="text" name="prework-item-fileTile" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复文号:V25 -->
+                                                    <td class="length pifufileNo">
+                                                        <input class="prework-item prework-item-fileNo" style="border: none" th:field="*{pifnaddress}" type="text" name="prework-item-fileNo" maxlength="50" />
+                                                    </td>
+                                                    <!-- 批复状态 :C08-->
+                                                    <td class="short">
+                                                        <select class="prework-item" style="border: none" th:field="*{psaddress}">
+                                                            <option value=""></option>
+
+                                                            <option value="已办结">已办结</option>
+
+                                                            <option value="办理中">办理中</option>
+
+                                                        </select>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="preWorkTr1">
+                                                    <th nowrap="nowrap">
+
+                                                        <span>环境影响评价批复</span>
+                                                        <input id="proWork_A00006" type="hidden" class="prework-item" value="A00006" />
+                                                    </th>
+                                                    <!-- 批复单位 :V23-->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none;background-color: #f2f2f2" type="text" th:field="*{pioenv}" name="prework-item-org" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复时间:T04 -->
+                                                    <td class="short planApproveTime">
+                                                        <input  type="date" style="border: none;background-color: #f2f2f2" name = "preworkdate" th:field="*{pdenv}" />
+                                                    </td>
+                                                    <!-- 批复文件标题：V24  -->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none;background-color: #f2f2f2" type="text" th:field="*{pifenv}" name="prework-item-fileTile" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复文号:V25 -->
+                                                    <td class="length pifufileNo">
+                                                        <input class="prework-item prework-item-fileNo" style="border: none;background-color: #f2f2f2" th:field="*{pifnenv}" type="text" name="prework-item-fileNo" maxlength="50" />
+                                                    </td>
+                                                    <!-- 批复状态 :C08-->
+                                                    <td class="short">
+                                                        <select class="prework-item" style="border: none;background-color: #f2f2f2" th:field="*{psenv}">
+                                                            <option value=""></option>
+
+                                                            <option value="已办结">已办结</option>
+
+                                                            <option value="办理中">办理中</option>
+
+                                                        </select>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="preWorkTr1">
+                                                    <th nowrap="nowrap">
+
+                                                        <span>节能评估和审查</span>
+                                                        <input id="proWork_A00007" type="hidden" class="prework-item" value="A00007" />
+                                                    </th>
+                                                    <!-- 批复单位 :V23-->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none" th:field="*{piosave}" type="text" name="prework-item-org" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复时间:T04 -->
+                                                    <td class="short planApproveTime">
+                                                        <input type="date" style="border: none" th:field="*{pdsave}" name = "preworkdate" />
+                                                    </td>
+                                                    <!-- 批复文件标题：V24  -->
+                                                    <td class="length">
+                                                        <input class="prework-item" style="border: none" th:field="*{pifsave}" type="text" name="prework-item-fileTile" maxlength="100" />
+                                                    </td>
+                                                    <!-- 批复文号:V25 -->
+                                                    <td class="length pifufileNo">
+                                                        <input class="prework-item prework-item-fileNo" style="border: none" th:field="*{pifnsave}" type="text" name="prework-item-fileNo" maxlength="50" />
+                                                    </td>
+                                                    <!-- 批复状态 :C08-->
+                                                    <td class="short" >
+                                                        <select class="prework-item" style="border: none" th:field="*{pssave}">
+                                                            <option value=""></option>
+
+                                                            <option value="已办结">已办结</option>
+
+                                                            <option value="办理中">办理中</option>
+
+                                                        </select>
+                                                    </td>
+                                                </tr>
+
+                                                </tbody>
+
+                                            </table>
+                                            <br />
+                                            <span class="red-color"><input type="submit" value="提交"/></span>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2019 - 2020 © 重点项目库. - Important.com
+                </footer>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <!-- jQuery  -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/popper.min.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/metisMenu.min.js"></script>
+        <script src="../assets/js/waves.js"></script>
+        <script src="../assets/js/jquery.slimscroll.js"></script>
+
+        <!-- EDITABLE TABLE -->
+        <script src="../plugins/tiny-editable/mindmup-editabletable.js"></script>
+        <script src="../plugins/tiny-editable/numeric-input-example.js"></script>
+
+        <!-- App js -->
+        <script src="../assets/js/jquery.core.js"></script>
+        <script src="../assets/js/jquery.app.js"></script>
+
+        <script>
+            $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+        </script>
+
+    </body>
+</html>

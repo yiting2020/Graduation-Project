@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>重点项目库</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico" th:href="@{../assets/images/favicon.ico}">
+        <script src="js/echarts.min.js" th:src="@{../assets/js/echarts.js}"></script>
+        <script src="js/echarts.min.js" th:src="@{../assets/js/china.js}"></script>
+        <script src="js/echarts.min.js" th:src="@{../assets/js/macarons.js}"></script>
+        <!-- App css -->
+        <link href="../../assets/css/bootstrap.min.css" th:href="@{../assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+        <link href="../../assets/css/icons.css" th:href="@{../assets/css/icons.css}" rel="stylesheet" type="text/css" />
+        <link href="../../assets/css/metismenu.min.css" th:href="@{../assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+        <link href="../../assets/css/style.css" th:href="@{../assets/css/style.css}" rel="stylesheet" type="text/css" />
+
+        <script src="../../assets/js/modernizr.min.js" th:href="@{../assets/js/modernizr.min.js}"></script>
+
+    </head>
+
+
+    <body >
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar" style="background: linear-gradient(to top, rgb(87, 194, 1),rgb(87, 194, 1));">
+
+                <!-- LOGO -->
+                <div class="topbar-left" style="background: linear-gradient(to top, rgb(87, 194, 1),rgb(87, 194, 1));">
+                    <a href="index-fg.html" class="logo">
+                        <span>
+                            <!--<img src="../../assets/images/logo.png" th:href="@{../assets/css/metismenu.min.css}" alt="" height="16">-->
+                        </span>
+                        <i>
+                            <img src="../../assets/images/logo_sm.png" th:href="@{../assets/css/metismenu.min.css}" alt="" height="28">
+                        </i>
+                    </a>
+                </div>
+
+                <nav class="navbar-custom" style="background: linear-gradient(to top, rgb(87, 194, 1),rgb(87, 194, 1));">
+
+                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="false" aria-expanded="false">
+                                <img src="../../assets/images/users/avatar-1.jpg" th:href="@{../assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                                <span class="ml-1" th:text="${session.loginuser.username}"> <i class="mdi mdi-chevron-down"></i> </span>欢迎您!
+
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h6 class="text-overflow m-0">欢迎 !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <!--<a href="javascript:void(0);" class="dropdown-item notify-item">-->
+                                    <!--<i class="fi-head"></i> <span>个人信息</span>-->
+                                <!--</a>-->
+
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                                    <i class="fi-power"></i> <span>注销</span>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect">
+                                <i class="dripicons-menu"></i>
+                            </button>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="slimscroll-menu" id="remove-scroll">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu" id="side-menu">
+                            <li class="menu-title">Important</li>
+                            <li>
+                                <a href="index-fg.html" th:href="@{/fagai/index-fg}">
+                                    <i class="fi-air-play"></i>
+                                    <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                                    <span> 首页 </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 项目审核 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="sh-none.html" th:href="@{/fagai/sh-none}">未审核项目</a></li>
+                                    <li><a href="sh-over.html" th:href="@{/fagai/sh-over}">已审核项目</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-box"></i> <span> 项目入库 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level nav" aria-expanded="false">
+                                    <li><a href="rk-ready.html" th:href="@{/fagai/rk-ready}">预备项目</a></li>
+                                    <li><a href="javascript: void(0);" aria-expanded="false">项目库 <span class="menu-arrow"></span></a>
+                                        <ul class="nav-third-level nav" aria-expanded="false">
+                                            <li><a href="rk-now.html" th:href="@{/fagai/rk-now}">当前年度</a></li>
+                                            <li><a href="rk-history.html" th:href="@{/fagai/rk-history}">历史年度</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> 项目调度 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="chart-flot.html" th:href="@{/fagai/dd-handle}">项目调度处理</a></li>
+                                    <li><a href="chart-flot.html" th:href="@{/fagai/dd-over}">项目调度结项</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-map"></i> <span> 前期工作事项 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a th:href="@{/fagai/qq-handle}">前期工作事项处理</a></li>
+                                    <li><a th:href="@{/fagai/alarm-handle}">前期工作事项预警</a></li>
+                                    <li><a th:href="@{/fagai/qq-over}">前期工作事项结项</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="wtfg-over.html" th:href="@{/fagai/quesfg-list}">问题待处理</a></li>
+                                    <li><a href="wtfg-over.html" th:href="@{/fagai/quesfg-handle}">问题已处理</a></li>
+                                    <li><a href="quesfg-display.html" th:href="@{/fagai/quesfg-over}">问题结项</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a th:href="@{/fgprojectview}">项目总体统计</a></li>
+                                    <li><a th:href="@{/fgproview}">前期工作统计</a></li>
+                                    <li><a th:href="@{/fgquesview}">问题督办统计</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title float-left">首页</h4>
+
+                                    <ol class="breadcrumb float-right">
+                                        <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                        <li class="breadcrumb-item active">首页</li>
+                                    </ol>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-12">-->
+                                <!--<div class="card-box">-->
+
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-md-12">-->
+                                            <!--<div class="card-box" >-->
+                      <!--<h3  style="text-align: center">您好！欢迎您登录互联网+固定资产投资项目库及调度系统</h3>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                    <!--&lt;!&ndash;<table class="table table-striped">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></th>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮箱</font></font></th>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户类型</font></font></th>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<td th:text="${session.loginuser.username}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<td th:text="${session.loginuser.email}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<td  th:text="${session.loginuser.role}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@</font></font></td>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+                                        <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+                                <!---->
+                                    <!--&lt;!&ndash;<canvas id="transactions-chart" height="350" class="mt-4"></canvas>&ndash;&gt;-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                        <!--</div>-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box">
+                                    <h3  style="text-align: center">您好！欢迎登录互联网+固定资产投资服务问题督办与统计分析监管平台</h3>
+
+
+                                    <!--<canvas id="transactions-chart" height="350" class="mt-4"></canvas>-->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                <div class="card-box tilebox-one">
+                                    <i class="fi-box float-right"></i>
+                                    <h6 class="text-muted text-uppercase mb-3">当前项目总数</h6>
+                                    <h4 class="mb-3" data-plugin="counterup" >
+                                        <p th:text="${projectsum}"></p>
+                                    </h4>
+                                    <span class="text-muted ml-2 vertical-middle">请及时关注项目情况</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                <div class="card-box tilebox-one">
+                                    <i class="fi-tag float-right"></i>
+                                    <h6 class="text-muted text-uppercase mb-3">当前调度总数</h6>
+                                    <h4 class="mb-3"  data-plugin="counterup">
+                                        <p th:text="${countdis}"></p>
+                                    </h4>
+                                    <span class="text-muted ml-2 vertical-middle">请及时关注调度情况</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                <div class="card-box tilebox-one">
+                                    <i class="fi-briefcase float-right"></i>
+                                    <h6 class="text-muted text-uppercase mb-3">当前前期工作总数</h6>
+                                    <h4 class="mb-3" data-plugin="counterup">
+                                        <p th:text="${countpro}"></p>
+                                    </h4>
+                                    <span class="text-muted ml-2 vertical-middle">请及时关注前期工作情况</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                                <div class="card-box tilebox-one">
+                                    <i class="fi-layers float-right"></i>
+                                    <h6 class="text-muted text-uppercase mb-3">当前问题总数</h6>
+                                    <h4 class="mb-3"  data-plugin="counterup">
+                                        <p th:text="${countques}"></p>
+                                    </h4>
+                                    <span class="text-muted ml-2 vertical-middle">请及时关注问题情况</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <h4 class="header-title">项目调度投资调整情况统计</h4>
+
+                                    <div id="echarts_diszbtype" style="height: 450px;padding: 0px;position: relative;"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <h4 class="header-title">前期工作批复状态情况统计</h4>
+
+                                    <div id="echarts_start" style="height: 450px;padding: 0px;position: relative"></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2019 - 2020 © 重点项目库. - Important.com
+                </footer>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="../../assets/js/jquery.min.js" th:href="@{../assets/js/jquery.min.js}"></script>
+        <script src="../../assets/js/popper.min.js" th:href="@{../assets/js/popper.min.js}"></script>
+        <script src="../../assets/js/bootstrap.min.js" th:href="@{../assets/js/bootstrap.min.js}"></script>
+        <script src="../../assets/js/metisMenu.min.js" th:href="@{../assets/js/metisMenu.min.js}"></script>
+        <script src="../../assets/js/waves.js" th:href="@{../assets/js/waves.js}"></script>
+        <script src="../../assets/js/jquery.slimscroll.js" th:href="@{../assets/js/jquery.slimscroll.js}"></script>
+        <script src="plugins/waypoints/lib/jquery.waypoints.min.js" th:href="@{plugins/waypoints/lib/jquery.waypoints.min.js}"></script>
+        <script src="plugins/counterup/jquery.counterup.min.js" th:href="@{plugins/counterup/jquery.counterup.min.js}"></script>
+
+        <!-- Chart JS -->
+        <script src="plugins/chart.js/chart.bundle.js" th:href="@{plugins/chart.js/chart.bundle.js}"></script>
+
+        <!--&lt;!&ndash; init dashboard &ndash;&gt;-->
+        <!--<script src="../../assets/pages/jquery.dashboard.init.js" th:href="@{../assets/pages/jquery.dashboard.init.js}"></script>-->
+
+        <!-- App js -->
+        <script src="../../assets/js/jquery.core.js" th:href="@{../assets/js/jquery.core.js}"></script>
+        <script src="../../assets/js/jquery.app.js" th:href="@{../assets/js/jquery.app.js}"></script>
+
+
+        <script>
+            window.onload=function() {
+                function gettype() {
+                    $.ajax({
+                        method: 'post',
+                        data: {},
+                        url: 'http://localhost:8080/fgindexdiszbtype',
+                        dataType: 'json',
+                        success: function (result) {
+                            // var pieData = eval("("+result+")");
+                            console.log(result);
+                            myChart1.setOption(
+                                option = {
+                                    tooltip: {
+                                        // trigger: "axis",
+                                    },
+                                    toolbox: {
+                                        show: true,
+                                        feature: {
+                                            mark: { show: true },
+                                            // dataView: { show: true, readOnly: false },
+                                            // magicType: { show: true, type: ['line'] },
+                                            restore: { show: true },
+                                            saveAsImage: { show: true }
+                                        }
+                                    },
+                                    grid: {
+                                        left: '15%',
+                                        right: '20%',
+                                        bottom: '5%',
+                                        containLabel: true
+                                    },
+                                    legend: {
+                                        itemWidth:30,
+                                        itemHeight:10,
+                                        left: 'center',
+                                        top: 'top',
+                                        data:['工程类','非工程类'],
+                                    },
+                                    xAxis: {
+                                        name:'投资计划调整',
+                                        data: ["不调整","准备调整","已调整"],
+                                        splitLine:{
+                                            show:false,
+                                        },
+                                    },
+                                    // yAxis: {
+                                    //     splitLine:{
+                                    //         show:false,
+                                    //     },
+                                    // },
+                                    yAxis: [
+                                        {
+                                            name:'前期工作数（个）',
+                                            minInterval: 1,//标值的最小间隔
+                                            type: 'value'
+                                        }
+                                    ],
+                                    series: [{
+                                        name: '工程类',
+                                        type: 'bar',
+                                        barWidth:'30%',
+                                        stack:'使用情况',
+                                        data: [result[0], result[1], result[2]],
+                                        itemStyle:{
+                                            normal:{color:"#72adff"},
+                                        }
+                                    },{
+                                        name: '非工程类',
+                                        type: 'bar',
+                                        stack:'使用情况',
+                                        barWidth:'20%',
+                                        data: [result[3], result[4], result[5]],
+                                        itemStyle:{
+                                            normal:{color:"#e4eb9b"},
+                                        }
+                                    }]
+                                }
+                            );
+
+                        }
+
+                    })
+                }
+
+                // 基于准备好的dom，初始化echarts实例
+                var myChart1 = echarts.init(document.getElementById('echarts_diszbtype'), 'light');
+                gettype();
+
+                function getadjust() {
+                    $.ajax({
+                        method: 'post',
+                        data: {},
+                        url: 'http://localhost:8080/fgindexproreply',
+                        dataType: 'json',
+                        success: function (result) {
+                            // var pieData = eval("("+result+")");
+                            console.log(result);
+                            myChart2.setOption(
+                                option = {
+
+                                    grid: {
+                                        left: '15%',
+                                        right: '20%',
+                                        bottom: '5%',
+                                        containLabel: true
+                                    },
+                                    tooltip: {
+                                        trigger: 'axis'
+                                    },
+                                    legend: {
+                                        data: ['办理中', '已办结'],
+                                        left: 'center',
+                                        top: 'top',
+                                    },
+                                    toolbox: {
+                                        show: true,
+                                        feature: {
+                                            // mark: { show: true },
+                                            // dataView: { show: true, readOnly: false },
+                                            magicType: { show: true, type: ['bar'] },
+                                            restore: { show: true },
+                                            saveAsImage: { show: true }
+                                        }
+                                    },
+                                    calculable: true,
+                                    xAxis: {
+                                        name:'批复状态',
+                                        type: 'category',
+                                        splitLine: { show: false },//去除网格线
+                                        boundaryGap: true, //取消左侧的间距
+                                        data: ["用地","选址",'节能评估',"环境评估"]
+                                    },
+                                    yAxis: {
+                                        name: '前期工作数（个）',//轴的名字，默认位置在y轴上方显示
+                                        type: 'value',
+                                        // splitLine: { show: false },//去除网格线
+                                        minInterval: 2,//标值的最小间隔
+
+                                    },
+                                    series: [{
+                                        name: '办理中',
+                                        type: 'line',
+                                        symbol: 'emptydiamond',    //设置折线图中表示每个坐标点的符号 emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
+                                        data: [result[0],result[2],result[4],result[6]]
+                                    },
+                                        {
+                                            name: '已办结',
+                                            type: 'line',
+                                            symbol: 'emptydiamond',    //设置折线图中表示每个坐标点的符号 emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
+                                            data: [result[1],result[3],result[5],result[7]]
+                                        }]
+                                }
+
+
+
+                            );
+
+                        }
+
+                    })
+                }
+
+                // 基于准备好的dom，初始化echarts实例
+                var myChart2 = echarts.init(document.getElementById('echarts_start'), 'light');
+                getadjust();
+
+
+
+
+            }
+
+        </script>
+    </body>
+</html>
+
+
+

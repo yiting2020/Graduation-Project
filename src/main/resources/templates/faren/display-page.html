@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>重点项目库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" th:href="@{../assets/images/favicon.ico}">
+
+    <!-- App css -->
+    <link  th:href="@{../assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/icons.css" th:href="@{../assets/css/icons.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/metismenu.min.css" th:href="@{../assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/css/style.css" th:href="@{../assets/css/style.css}" rel="stylesheet" type="text/css" />
+    <link href="../../assets/themes/metro/ui.metro.dateChooser.css" th:href="@{../assets/themes/metro/ui.metro.dateChooser.css}" rel="stylesheet" type="text/css" />
+    <link id="theme" type="text/css" rel="stylesheet" href="../../assets/themes/metro.color/ui.metro.Default.css" th:href="@{../assets/themes/metro.color/ui.metro.Default.css}">
+    <script src="../../assets/js/modernizr.min.js" th:href="@{../assets/js/modernizr.min.js}"></script>
+    <style type="text/css">
+
+        /*=========基本信息表单==========*/
+        /* 表格布局样式 */
+        #baseInfoForm table {
+            width: 100%;
+        }
+        #baseInfoForm td {
+            width: 50%;
+        }
+
+        /* 表单元素样式 */
+        #baseInfoForm input[type="text"] {
+            width: 360px;
+            height: 28px;
+            line-height: 28px;
+        }
+
+        #baseInfoForm input[type="text"][disabled] {
+            background-color: #E1E1E1 !important;
+        }
+
+        #baseInfoForm select {
+            width: 364px;
+            height: 30px;
+        }
+
+        #baseInfoForm textarea {
+            width: 760px;
+            height: 90px;
+        }
+
+        #baseInfoForm label.label-text {
+            line-height: 30px;
+            color: #666666;
+        }
+
+        /*=========其他信息表单==========*/
+        /* 表格布局样式 */
+
+        #otherInfoForm table {
+            width: 100%;
+        }
+        #otherInfoForm td {
+            width: 50%;
+        }
+
+        /* 表单元素样式 */
+        #otherInfoForm input[type="text"] {
+            width: 360px;
+            height: 28px;
+            line-height: 28px;
+        }
+
+        #otherInfoForm input[type="text"][disabled] {
+            background-color: #F1F1F1 !important;
+        }
+
+        #otherInfoForm select {
+            width: 364px;
+            height: 30px;
+        }
+
+        #otherInfoForm textarea {
+            width: 760px;
+            height: 90px;
+        }
+
+        #otherInfoForm label.label-text {
+            line-height: 30px;
+            color: #666666;
+        }
+
+        /*=========地方指标表单==========*/
+        /* 表格布局样式 */
+
+        #areaItemInfoForm table {
+            width: 70%;
+        }
+        #areaItemInfoForm td {
+            width: 50%;
+        }
+        #areaItemInfoForm input[type="text"] {
+            width: 360px;
+            height: 28px;
+            line-height: 28px;
+        }
+        #areaItemInfoForm textarea {
+            width: 760px;
+            height: 90px;
+        }
+        /* 表单元素样式 */
+        #areaItemInfoForm select {
+            width: 364px;
+            height: 30px;
+        }
+
+        #areaItemInfoForm label.label-text {
+            line-height: 30px;
+            color: #666666;
+        }
+
+        /*=========报送项目面板==========*/
+        #submitProjectForm th {
+            font-weight: normal;
+            text-align: right;
+            width: 100px;
+        }
+
+        #submitProjectForm td {
+            width: 290px;
+        }
+
+        #submitProjectForm input[type="text"] {
+            height: 28px;
+            line-height: 28px;
+            width: 260px;
+        }
+
+        /*=========底部按钮面板==========*/
+        .bottom-bar-panel {
+            position: relative;
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+        }
+
+        .bottom-bar-panel button {
+            cursor: pointer;
+            width: 120px;
+            height: 36px;
+            margin-left: 10px;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .bottom-bar-panel .button-panel {
+            position: absolute;
+            right: 20px;
+            top: 0px;
+            height: 100%;
+            width: auto;
+        }
+
+        .bottom-bar-panel .input-desc {
+            width: 880px;
+            margin: 0px auto;
+        }
+
+
+        td {
+            position: relative;
+        }
+        .line{
+            display: inline-block;
+            line-height: 20px;
+        }
+        #basicInfo .xtit{
+            font-size: 16px;
+            color: #306599;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 14px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        #basicInfo .xtit:before {
+            content: '';
+            position: absolute;
+            width:3px;
+            height:16px;
+            background: #306599;
+            left: 6px;
+            top: 3px;
+        }
+        #basicInfo td {
+            border: 1px solid #cdcdcd;
+            padding: 8px 23px;
+        }
+        #basicInfo input:not([type]) {
+            width: 100%;
+            box-sizing: border-box;
+            color: #5b5b5b;
+            padding: 5px 9px;
+            text-overflow: ellipsis;
+            border: 1px solid #a4b5c9;
+        }
+        #basicInfo .right-checkbox {
+            margin-left:0;
+        }
+        #basicInfo table {
+            background: #f5f5f5;
+        }
+        #basicInfo table b{
+            display: inline-block;
+            margin-bottom: 3px;
+        }
+        #jianguanpingtai {
+            color:#000;
+        }
+        #pingtai {
+            margin-bottom: 20px;
+        }
+        .content-window {
+            background:#fff;
+        }
+        #pingtai {
+            font-size: 16px;
+        }
+        #checkAll {
+            vertical-align: -1px;
+            margin-right: 6px;
+            margin-left: 0;
+        }
+        #donttongbu,#tongbu{
+            background: #346ea3;
+            color: #fff;
+            width:84px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 2px;
+            border: none;
+            margin-left: 10px;
+        }
+        #kppPreWorkInfoBody .line {
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        #kppPreWorkInfoBody td {
+            padding: 8px 10px;
+            text-align: left;
+            overflow: hidden;
+        }
+        .prework-header th {
+            padding: 8px 0;
+            line-height: 20px;
+            border: 1px solid #cdcdcd;
+            background: rgb(245,245,245);
+        }
+        #kppPreWorkInfoBody .preWorkTr2:nth-of-type(even){
+            background: white;
+        }
+        /*.bjzt:before {*/
+        /*display: inline-block;*/
+        /*content:attr(bjzt);*/
+        /*width:20px;*/
+
+        /*height:20px;*/
+        /*color: red;*/
+        /*}*/
+        #prekan {
+            height: 27px;
+            width: 96px;
+            box-sizing: border-box;
+            display: inline-block;
+            color: #306599;
+            text-decoration: none;
+            line-height: 27px;
+            padding-right: 12px;
+            text-align: right;
+            margin: 0 15px 0 10px;
+        }
+        #neirong{
+            display: none;
+        }
+        .statuTag {
+            display: inline-block;
+            color: #d7a9a9;
+            border: 1px solid #d7a9a9;
+            border-radius: 3px;
+            line-height: 12px;
+            vertical-align: middle;
+            padding: 3px 9px 1px 9px;
+            margin-right: 10px;
+            margin-top: -3px;
+            text-align: center;
+        }
+        .statuTag .f8{
+            margin: 0 -20px;
+        }
+        .f8 {
+            transform: scale(0.66666667);
+        }
+
+
+        .selectDiv2{
+            width:335px;
+            float:left;
+            font-family:simsun,Verdana,Geneva,sans-serif;
+            color:#333333;
+            vertical-align:middle;
+            position: relative;
+        }
+        .selectDiv2 h6{
+            font-size:14px;
+            line-height:22px;
+            text-indent:10px;
+            padding:4px;
+            background-color:#f0f0f0;
+            border:1px solid #cdcdcd;
+        }
+        .selectDiv2 .blueBtn{
+            padding:0px 7px;
+            display:block;
+            font-family:simsun,Verdana,Geneva,sans-serif;
+            margin:0px auto;
+            margin-top:5px;
+        }
+        .selectDiv2 h6 span{
+            font-size:12px;
+            float:right;
+        }
+        .selectDiv2 .selectDiv2_span{
+            margin-right:23px;
+        }
+        .selectDiv2 .ulStyle,.selectDiv2 .treeStyle{
+            padding:0px 10px;
+            border:#cccccc 1px solid;
+            height:438px;
+            width: 390px;
+            overflow-x:auto;
+            overflow-y:scroll;
+        }
+        .selectDiv2 .ulStyle{
+            overflow-x:auto;
+        }
+        .selectDiv2 .ulStyle li span{
+            float:right;
+        }
+        .button {
+            min-width: 0px;
+        }
+        .ztree li span.button.chk {
+            width:14px !important;
+            height:14px !important;
+            margin:0 4px 0 0 !important;
+            cursor: auto !important;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Top Bar Start -->
+    <div class="topbar">
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="index-fr.html" class="logo">
+                <!--<span>
+                    <img src="../../assets/images/logo.png" th:href="@{../assets/images/logo.png}" alt="" height="16">
+                </span>
+                <i>
+                    <img src="../../assets/images/logo_sm.png" th:href="@{../assets/images/logo_sm.png}" alt="" height="28">
+                </i>-->
+            </a>
+        </div>
+
+        <nav class="navbar-custom">
+
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="../../assets/images/users/avatar-1.jpg" th:href="@{../assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                        <span class="ml-1" th:text="${session.loginuser.username}"> <i class="mdi mdi-chevron-down"></i> </span>欢迎您!
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">欢迎 !</h6>
+                        </div>
+
+
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                            <i class="fi-power"></i> <span>注销</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+            </ul>
+
+        </nav>
+
+    </div>
+    <!-- Top Bar End -->
+
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="slimscroll-menu" id="remove-scroll">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-thitle">Important</li>
+                    <li>
+                        <a href="index-fr.html" th:href="@{/faren/index-fr}">
+                            <i class="fi-air-play"></i>
+                            <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                            <span> 首页 </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 项目管理 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="gl-tianbao.html" th:href="@{/faren/gl-tianbao}">项目填报</a></li>
+                            <li><a href="gl-weibao.html" th:href="@{/faren/gl-weibao}">未报项目</a></li>
+                            <li><a href="gl-yibao.html" th:href="@{/faren/gl-yibao}">已报项目</a></li>
+                            <li><a href="gl-yibao.html" th:href="@{/faren/gl-shenhe}">审核项目</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-box"></i><span> 项目调度 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="dd-mytask.html" th:href="@{/faren/dd-mytask}">我的调度任务</a></li>
+                            <li><a href="dd-overtask.html" th:href="@{/faren/dd-overtask}">已结项任务</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/faren/ques-tianbao}">问题填报</a></li>
+                            <li><a th:href="@{/faren/ques-list}">问题申请</a></li>
+                            <li><a th:href="@{/faren/ques-handle}">问题处理</a></li>
+                            <li><a th:href="@{/faren/ques-over}">问题结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/frprojectview}">项目总体统计</a></li>
+                            <li><a th:href="@{/frquesview}">项目问题统计</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">项目信息</h4>
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                <li class="breadcrumb-item"><a href="#">项目管理</a></li>
+                                <li class="breadcrumb-item active">项目信息</li>
+                            </ol>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <div id="tabBodyPanel" class="tab-body-panel">
+                                <div class="tab-body" id="baseInfoPanel">
+                                    <div class="form-panel" style="width:800px;">
+                                        <form id="baseInfoForm" method="post" th:action="@{/faren/display-page}" th:object="${projectInfo}">
+                                            <dl class="fold-panel">
+                                                <dt>基本信息</dt>
+                                                <dd>
+                                                    <table cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td style="display: none">
+                                                                <label class="label-text">项目id<span class="red-color">*</span></label>
+                                                                <br />
+                                                                <input  th:field="*{pid}" name="proName" class="base-info-required" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">项目名称<span class="red-color">*</span></label>
+                                                                <br />
+                                                                <input  th:field="*{projectname}" name="proName" class="base-info-required" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">项目类型</label>
+                                                                <br />
+                                                                <select id="projectType"  th:field="*{projecttype}" name="projectType">
+                                                                    <option value=""></option>
+                                                                    <option value="审批">审批</option>
+                                                                    <option value="核准">核准</option>
+                                                                    <option value="备案">备案</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <label class="label-text">建设性质<span class="red-color">*</span></label>
+                                                                <br />
+                                                                <select id="buildNature" th:field="*{buildnature}" name="buildNature" class="base-info-required">
+                                                                    <option value=""></option>
+                                                                    <option value="新建">新建</option>
+                                                                    <option value="扩建">扩建</option>
+                                                                    <option value="续建">续建</option>
+                                                                    <option value="改建">改建</option>
+                                                                    <option value="改扩建">改扩建</option>
+                                                                    <option value="恢复">恢复</option>
+                                                                    <option value="单纯购置">单纯购置</option>
+                                                                    <option value="改造和技术改造">改造和技术改造</option>
+                                                                    <option value="迁建">迁建</option>
+                                                                    <option value="单纯建造生活措施">单纯建造生活措施</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">建设地点<span class="red-color">*</span></label>
+                                                                <br />
+                                                                <select id="buildPlace" th:field="*{buildplace}" name="buildPlace" type="text" class="select-text base-info-required" >
+                                                                    <option value=""></option>
+                                                                    <option value="北京">北京</option>
+                                                                    <option value="天津">天津</option>
+                                                                    <option value="上海">上海</option>
+                                                                    <option value="重庆">重庆</option>
+                                                                    <option value="山西">山西</option>
+                                                                    <option value="辽宁">辽宁</option>
+                                                                    <option value="吉林">吉林</option>
+                                                                    <option value="黑龙江">黑龙江</option>
+                                                                    <option value="江苏">江苏</option>
+                                                                    <option value="浙江">浙江</option>
+                                                                    <option value="安徽">安徽</option>
+                                                                    <option value="福建">福建</option>
+                                                                    <option value="江西">江西</option>
+                                                                    <option value="山东">山东</option>
+                                                                    <option value="河南">河南</option>
+                                                                    <option value="湖北">湖北</option>
+                                                                    <option value="湖南">湖南</option>
+                                                                    <option value="海南">海南</option>
+                                                                    <option value="四川">四川</option>
+                                                                    <option value="贵州">贵州</option>
+                                                                    <option value="云南">云南</option>
+                                                                    <option value="陕西">陕西</option>
+                                                                    <option value="甘肃">甘肃</option>
+                                                                    <option value="青海">青海</option>
+                                                                    <option value="香港">香港</option>
+                                                                    <option value="澳门">澳门</option>
+                                                                    <option value="台湾">台湾</option>
+                                                                    <option value="广西">广西</option>
+                                                                    <option value="西藏">西藏</option>
+                                                                    <option value="宁夏">宁夏</option>
+                                                                    <option value="新疆">新疆</option>
+
+
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+
+                                                        <td></td>
+                                                        <tr class="build-place-row-class">
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <label class="label-text">建设详细地址<span class="red-color">*</span><span class='prompt-message' >（不能超过200个字）</span></label>
+                                                                <br />
+                                                                <textarea id="buildAddress" th:field="*{buildaddress}" name="buildAddress" class="base-info-required"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td>
+                                                                <label class="label-text">所属行业<span class="red-color">*</span><span class='prompt-message' >（请选择最细一级行业）</span></label>
+                                                                <br />
+                                                                <select id="industry" th:field="*{industry}" name="industry" class="select-text base-info-required" >
+                                                                    <option value=""></option>
+                                                                    <option value="农业">农业</option>
+                                                                    <option value="林业">林业</option>
+                                                                    <option value="水利业">水利业</option>
+                                                                    <option value="生态和环境保护业">生态和环境保护业</option>
+                                                                    <option value="旅游业">旅游业</option>
+                                                                    <option value="能源业">能源业</option>
+                                                                    <option value="制造业">制造业</option>
+                                                                    <option value="装备工业">装备工业</option>
+                                                                    <option value="原材料工业">原材料工业</option>
+                                                                    <option value="交通业">交通业</option>
+                                                                    <option value="运输业">运输业</option>
+                                                                    <option value="仓储和邮政业">仓储和邮政业</option>
+                                                                    <option value="住宿和餐饮业">住宿和餐饮业</option>
+                                                                    <option value="信息传输和软件业">信息传输和软件业</option>
+                                                                    <option value="建筑业">建筑业</option>
+                                                                    <option value="金融业">金融业</option>
+                                                                    <option value="文化教育业">文化教育业</option>
+                                                                    <option value="卫生健康业">卫生健康业</option>
+                                                                    <option value="租赁和商品服务业">租赁和商品服务业</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">总投资（万元）</label>
+                                                                <br />
+                                                                <input id="investmentTotal" th:field="*{investmenttotal}" name="investmentTotal" type="text"  />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td>
+                                                                <label class="label-text">拟开工日期（参考指标）<span class="red-color">*</span></label>
+                                                                <br />
+                                                                <input type="date" id="nstartTime" th:field="*{nstarttime}">
+                                                                <!--<input id="expectStartTime" name="expectStartTime" type="text" readonly class="date-text" >-->
+                                                                <span class="red-color" style="font-size: 12px">&nbsp;&nbsp;注：当月开工项目需精确到日</span>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text"><span>拟竣工日期（参考指标）</span><span class="red-color">*</span></label>
+                                                                <br />
+                                                                <input type="date" id="nendTime" th:field="*{nendtime}">
+                                                                <!--<input id="expectEndYear" name="expectEndYear" readonly type="text" class="date-text" >-->
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <label class="label-text">
+                                                                    <span>主要建设规模及内容</span>
+                                                                    <span class="red-color">*</span>
+                                                                    <span class='prompt-message' >（不能超过250个字）</span>
+                                                                </label>
+                                                                <br />
+                                                                <textarea id="mainBuildScale" th:field="*{mainbuildscale}" name="mainBuildScale" class="base-info-required"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                        <!--<tr>
+                                                            <td colspan="2">
+                                                                <label class="label-text">
+                                                                    <span>（年度）主要建设内容</span>
+                                                                    <span class="red-color">*</span>
+                                                                    <span class='prompt-message' >（不能超过250个字）</span>
+                                                                </label>
+                                                                <br />
+                                                                <textarea id="mainBuildContent" th:field="*{mainbuildcontent}" name="mainBuildContent" class="base-info-required"></textarea>
+                                                            </td>
+                                                        </tr>-->
+
+                                                    </table>
+
+                                                </dd>
+                                                <dt>入库依据</dt>
+                                                <dd>
+                                                    <table cellpadding="0" cellspacing="0">
+                                                        <tr >
+                                                            <td>
+
+                                                                <label class="label-text">
+                                                                    项目隶属关系
+                                                                    <span class="red-color centralInvest">*</span>
+                                                                </label>
+                                                                <br />
+                                                                <select id="projectAffiliation" th:field="*{projectaffiliation}" name="projectAffiliation"  type="text" readonly="readonly" class="select-text">
+                                                                    <option value=""></option>
+                                                                    <option value="中央项目">中央项目</option>
+                                                                    <option value="地方项目">地方项目</option>
+                                                                    <option value="企业项目">企业项目</option>
+
+                                                                </select>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    日常监管直接责任单位
+                                                                    <span class="red-color centralInvest">*</span><span style="color : red">(请输入单位全称)</span>
+                                                                </label>
+                                                                <br />
+                                                                <input id="directDept1" th:field="*{directdept1}" maxlength="50" name="directDept1" type="text"/>
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    项目（法人）单位
+                                                                    <span class="red-color ">*</span><span style="color : red">(请输入单位全称)</span>
+                                                                </label>
+                                                                <br />
+                                                                <input id="proOrg" th:field="*{proorg}" name="proOrg" type="text" class="base-info-required" value="企业0741" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label class="label-text">日常监管直接责任单位监管责任人<span class="red-color centralInvest">*</span></label>
+                                                                <br />
+                                                                <input id="directContactorName" th:field="*{directcontactorname}" maxlength="50" name="directContactorName" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">日常监管直接责任单位联系电话<span class="red-color centralInvest">*</span></label>
+                                                                <br />
+                                                                <input id="directContactorPhone" th:field="*{directcontactorphone}" name="directContactorPhone" type="text" />
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    投资计划年度
+                                                                    <span  class="red-color centralInvest ">*</span>
+                                                                </label>
+                                                                <br />
+
+                                                                <select id="MoneyYear" th:field="*{moneyyear}" name="MoneyYear">
+                                                                    <option value=""></option>
+
+                                                                    <option value="2020">2020</option>
+
+                                                                    <option value="2019">2019</option>
+
+                                                                    <option value="2018">2018</option>
+
+                                                                    <option value="2017">2017</option>
+
+                                                                    <option value="2016">2016</option>
+
+                                                                    <option value="2015">2015</option>
+
+                                                                </select>
+                                                            </td>
+
+                                                        </tr>
+                                                    </table>
+                                                </dd>
+                                                <dt>项目责任人</dt>
+                                                <dd>
+                                                    <table cellpadding="0" cellspacing="00">
+                                                        <tr>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    姓名
+                                                                    <span class="red-color">*</span>
+                                                                </label>
+                                                                <br />
+                                                                <input id="proUserName" th:field="*{prousername}" name="proUserName" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    手机
+                                                                    <span class="red-color">*</span>
+                                                                </label>
+                                                                <br />
+                                                                <input id="proUserPhone" th:field="*{prouserphone}" name="proUserPhone" type="text" />
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </table>
+                                                </dd>
+                                                <dt>项目联系人</dt>
+                                                <dd>
+                                                    <table cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    姓名
+                                                                    <span class="red-color">*</span>
+                                                                </label>
+                                                                <br />
+                                                                <input id="proContactorName" th:field="*{procontactorname}" name="proContactorName1" type="text" />
+                                                            </td>
+                                                            <td>
+                                                                <label class="label-text">
+                                                                    手机
+                                                                    <span class="red-color">*</span>
+                                                                </label>
+                                                                <br />
+                                                                <input id="proContactorPhone" th:field="*{procontactorphone}" name="proContactorPhone1" type="text" />
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </table>
+                                                </dd>
+
+                                            </dl>
+                                            <input type="submit" value="修改" class="submit_btn1"/>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2019 - 2020 © 重点项目库. - Important.com
+        </footer>
+
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+
+
+<!-- jQuery  -->
+<script src="../../assets/js/jquery.min.js" th:href="@{../assets/js/jquery.min.js}"></script>
+<script src="../../assets/js/popper.min.js" th:href="@{../assets/js/popper.min.js}"></script>
+<script src="../../assets/js/bootstrap.min.js" th:href="@{../assets/js/bootstrap.min.js}"></script>
+<script src="../../assets/js/metisMenu.min.js" th:href="@{../assets/js/metisMenu.min.js}"></script>
+<script src="../../assets/js/waves.js" th:href="@{../assets/js/waves.js}"></script>
+<script src="../../assets/js/jquery.slimscroll.js" th:href="@{../assets/js/jquery.slimscroll.js}"></script>
+
+<!-- App js -->
+<script src="../../assets/js/jquery.core.js" th:href="@{../assets/js/jquery.core.js}"></script>
+<script src="../../assets/js/jquery.app.js" th:href="@{../assets/js/jquery.app.js}"></script>
+
+</body>
+</html>

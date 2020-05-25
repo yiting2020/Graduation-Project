@@ -1,0 +1,156 @@
+@CHARSET "UTF-8";
+/* 头部样式 */
+#header{
+	width:100%;
+	height:80px;
+	background:url(../images/header_bg.jpg) 0px 0px no-repeat;
+	position:relative;
+}
+	
+#header .systemLogo{
+	position:absolute;
+	top:8px;
+	left:10px;
+	width:64px;
+	height:64px;
+	max-width:64px;
+	max-height:64px;
+	z-index:10;
+}
+#header .systemName{
+	line-height:80px;
+	padding-left:80px;
+	color:#fff;
+	font-size:30px;
+	font-weight:bold;
+	font-family:microsoft yahei;
+	z-index:10;
+}
+#header .systemName span{
+	font-size:18px;
+}
+#header .info{
+	line-height:20px;
+	color:#fff;
+	position:absolute;
+	top:10px; /*30px*/
+	right:10px; /*20px*/
+	z-index: 1;
+}
+a {
+	color: Black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: Red;
+	text-decoration: underline;
+}
+
+.easyui-accordion ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0;
+}
+
+.easyui-accordion ul li {
+	padding: 0px;
+	height:36px;line-height:36px;border-bottom:1px solid #e5e5e5;background:#f9f9f9;overflow:hidden;text-indent:3px;
+}
+
+.easyui-accordion ul li a {
+	line-height: 35px;
+	color:#436290;
+}
+.easyui-accordion ul li strong{font-weight:normal;}
+.easyui-accordion ul li div {
+	margin: 0px;
+	padding-left: 10px;
+	padding-top: 0px;
+}
+
+.easyui-accordion ul li div.hover {
+	/*
+	border: 1px dashed #99BBE8;
+	background: #E0ECFF;
+	*/
+	cursor: pointer;
+}
+
+.easyui-accordion ul li div.hover a {
+	color: #f60;
+}
+
+.easyui-accordion ul li div.selected {
+	
+	background: url(images/LnavS.png) no-repeat;
+	cursor: default;
+}
+
+.easyui-accordion ul li div.selected a {
+	color: #f60;
+	font-weight: bold;
+}
+/** 
+ * 针对IE8，IE9 accordion 的内容面板为空
+ */
+ .homeAccordion .menubodyNoneCls {
+  padding:0;
+  margin:0;
+  border:0;
+  width:0px;
+  display:none;
+ }
+ /**
+  * 单击选中样式
+  */
+ .clickSelected {
+	color: #f60!important;
+	font-weight: bold;
+	}
+/**
+ * 隐藏没有accodrion panel 的内容 
+ */ 
+ .no-panel-tool-class .panel-tool{
+   display:none;
+ }
+/*  .no-panel-tool-class div.hover a { */
+/* 	color: #f60; */
+/*  } */
+ 
+/*  .no-panel-tool-class  div.selected a { */
+/* 	color: #f60; */
+/* 	font-weight: bold; */
+/* } */
+ 
+.homeAccordion .panel-title div.hover {
+	/*
+	border: 1px dashed #99BBE8;
+	background: #E0ECFF;
+	*/
+	cursor: pointer;
+}
+
+.homeAccordion .panel-title div.hover a {
+	color: #f60!important;
+}
+/**
+ * 调整tabs 的样式
+ */
+.vPosition { 
+ 		   layout-flow:vertical-ideographic; 
+ 		   writing-mode:tb-rl;
+		   padding-top:5px;
+		   padding-left:0px;
+		   line-height:1px;
+		   letter-spacing:3px;
+		}
+		
+/*
+ *左侧导航栏第三级菜单样式
+*/
+.easyui-accordion ul li p{padding-left:10px;}
+.third{display:none;margin-left:10px;}		
+.easyui-accordion ul li.secNav{background:url(../images/leftNavExpanded.png) no-repeat 8px 14px;}
+.easyui-accordion ul li.secSel{background:url(../images/leftNavCollapsed.png) no-repeat 8px 14px;}		
+		

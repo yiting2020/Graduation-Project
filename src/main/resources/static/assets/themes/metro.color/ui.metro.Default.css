@@ -1,0 +1,89 @@
+/*
+    Color : #014888
+    Name : 发改委蓝
+    OldColor : #2F6699
+*/
+
+.head-color {
+    background-color: #014888;
+}
+
+.title-color {
+    background-color: #27649A;
+}
+
+a {
+    color:#014888;
+}
+
+.font-highlight {
+    color: #014888 !important;
+}
+
+.font-highlight-hover:hover {
+    color: #014888 !important;
+}
+
+.background-highlight {
+    background-color: #014888 !important;
+    color: #FFFFFF !important;
+}
+
+.background-highlight-hover:hover {
+    background-color: #014888 !important;
+    color: #FFFFFF !important;
+}
+
+.border-highlight {
+    border-color: #014888 !important;
+}
+
+.border-highlight-hover:hover {
+    border-color: #014888 !important;
+}
+
+.icon-button:hover, .tool-button:hover, .button-highlight {
+    color: #014888;
+    border-color: #014888;
+}
+
+.icon-button:active, .tool-button:active {
+    background-color: #014888 !important;
+    color: #FFFFFF !important;
+}
+
+.tools input[type="text"]:focus, .tools textarea:focus, .tools select:focus {
+    background-color: transparent;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus, select:focus {
+    border-color: #014888;
+}
+
+::selection
+{
+    background-color: #014888;
+    color:#FFFFFF;
+}
+
+::-moz-selection
+{
+    background-color: #014888;
+    color:#FFFFFF;
+}
+
+/*UI Ctrls Style*/
+
+/*dateChooser*/
+div.calendar-panel td:hover {
+    color: #014888;
+}
+div.date-panel div.days-panel td.other-month:hover {
+    color: #014888;
+}
+div.calendar-panel div.prev:hover {
+    border-color: transparent #014888 transparent transparent;
+}
+div.calendar-panel div.next:hover {
+    border-color: transparent transparent transparent #014888;
+}

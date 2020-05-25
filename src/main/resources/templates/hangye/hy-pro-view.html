@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>重点项目库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" th:href="@{assets/images/favicon.ico}">
+    <script src="js/echarts.min.js" th:src="@{assets/js/echarts.js}"></script>
+    <script src="js/echarts.min.js" th:src="@{assets/js/macarons.js}"></script>
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" th:href="@{assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.css" th:href="@{assets/css/icons.css}"  rel="stylesheet" type="text/css" />
+    <link href="../assets/css/metismenu.min.css" th:href="@{assets/css/metismenu.min.css}" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" th:href="@{assets/css/style.css}" rel="stylesheet" type="text/css" />
+
+    <script src="../assets/js/modernizr.min.js" th:href="@{assets/js/modernizr.min.js}"></script>
+
+</head>
+
+
+<body onLoad="init()">
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Top Bar Start -->
+    <div class="topbar" style="background: linear-gradient(to top, #e8c66f, #f1d914);" >
+
+        <!-- LOGO -->
+        <div class="topbar-left" style="background: linear-gradient(to top,#e8c66f, #f1d914);" >
+            <a href="index-hy.html" class="logo">
+                        <span>
+                            <!--<img src="../assets/images/logo.png" th:href="@{assets/images/logo.png}" alt="" height="16">-->
+                        </span>
+                <i>
+                    <img src="../assets/images/logo_sm.png" th:href="@{assets/images/logo_sm.png}" alt="" height="28">
+                </i>
+            </a>
+        </div>
+
+        <nav class="navbar-custom" style="background: linear-gradient(to top, #e8c66f, #f1d914);" >
+
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="../assets/images/users/avatar-1.jpg" th:href="@{assets/images/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                        <span class="ml-1" th:text="${session.loginuser.username}"> <i class="mdi mdi-chevron-down"></i> </span>欢迎您!
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">欢迎 !</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" th:href="@{/exit}" class="dropdown-item notify-item">
+                            <i class="fi-power"></i> <span>注销</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+    <!-- Top Bar End -->
+
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="slimscroll-menu" id="remove-scroll">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-title">Important</li>
+                    <li>
+                        <a href="index-hy.html" th:href="@{/hangye/index-hy}">
+                            <i class="fi-air-play"></i>
+                            <!--<span class="badge badge-danger badge-pill pull-right">3</span>-->
+                            <span> 首页 </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-map"></i> <span> 前期工作事项 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/hangye/gz-list}">前期工作事项清单</a></li>
+                            <li><a th:href="@{/hangye/gz-alarm}">前期工作事项预警</a></li>
+                            <li><a th:href="@{/hangye/gz-over}">前期工作事项结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-mail"></i><span> 问题督办 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/hangye/queshy-tianbao}">问题填报</a></li>
+                            <li><a th:href="@{/hangye/queshy-list}">问题申请</a></li>
+                            <li><a th:href="@{/hangye/queshy-handle}">问题处理</a></li>
+                            <li><a th:href="@{/hangye/queshy-over}">问题结项</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> 统计分析 </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a th:href="@{/hyproview}">前期工作事项统计</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">前期工作事项统计</h4>
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a href="#">重点项目库</a></li>
+                                <li class="breadcrumb-item active">统计分析</li>
+                                <li class="breadcrumb-item active">前期工作事项统计</li>
+                            </ol>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+
+                <!--<div class="row">-->
+                    <!--<div class="col-12">-->
+                        <!--<div class="card-box">-->
+                            <!--<h3 class="">您好！欢迎您查看前期工作事项情况统计</h3>-->
+
+                            <!--&lt;!&ndash;<canvas id="transactions-chart" height="350" class="mt-4"></canvas>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">-->
+                        <!--<div class="card-box tilebox-one">-->
+                            <!--<i class="fi-box float-right"></i>-->
+                            <!--<h6 class="text-muted text-uppercase mb-3">前期工作事项总数</h6>-->
+                            <!--<h4 class="mb-3" data-plugin="counterup" >-->
+                                <!--<p th:text="${countsum}"></p>-->
+                            <!--</h4>-->
+                            <!--<span class="text-muted ml-2 vertical-middle">个</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">-->
+                        <!--<div class="card-box tilebox-one">-->
+                            <!--<i class="fi-layers float-right"></i>-->
+                            <!--<h6 class="text-muted text-uppercase mb-3">前期工作事项未填数</h6>-->
+                            <!--<h4 class="mb-3"><span data-plugin="counterup">-->
+                                            <!--<p th:text="${countweitian}"></p>-->
+                                        <!--</span></h4>-->
+                            <!--<span class="text-muted ml-2 vertical-middle">个</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">-->
+                        <!--<div class="card-box tilebox-one">-->
+                            <!--<i class="fi-tag float-right"></i>-->
+                            <!--<h6 class="text-muted text-uppercase mb-3">前期工作事项已填数</h6>-->
+                            <!--<h4 class="mb-3"><span data-plugin="counterup">-->
+                                            <!--<p th:text="${countyitian}"></p>-->
+                                        <!--</span></h4>-->
+                            <!--<span class="text-muted ml-2 vertical-middle">个</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">-->
+                        <!--<div class="card-box tilebox-one">-->
+                            <!--<i class="fi-briefcase float-right"></i>-->
+                            <!--<h6 class="text-muted text-uppercase mb-3">前期工作事项结项数</h6>-->
+                            <!--<h4 class="mb-3" data-plugin="counterup">-->
+                                <!--<p th:text="${countjiexiang}"></p>-->
+                            <!--</h4>-->
+                            <!--<span class="text-muted ml-2 vertical-middle">个</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+                <!--start new row-->
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="card-box">
+                            <h4 class="header-title">前期工作事项的填报状态统计</h4>
+
+                            <div id="echarts_1" style="height: 450px;padding: 0px;position: relative"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                            <div class="card-box">
+                                <h4 class="header-title">前期工作事项问题的状态统计</h4>
+
+                                <div id="echarts_3" style="height: 450px;padding: 0px;position: relative"></div>
+                            </div>
+                        </div>
+
+                </div>
+                <!-- end row -->
+                <!--<div class="row">-->
+
+                   <!---->
+
+                    <!--&lt;!&ndash;<div class="col-lg-6">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="card-box">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<h4 class="header-title">前期工作事项的用地批复状态统计</h4>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<div id="echarts_4" style="height: 450px;padding: 0px;position: relative"></div>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                <!--</div>-->
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2019 - 2020 © 重点项目库. - Important.com
+        </footer>
+
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+
+
+<!-- jQuery  -->
+<script src="../assets/js/jquery.min.js" th:href="@{assets/js/jquery.min.js}"></script>
+<script src="../assets/js/popper.min.js" th:href="@{assets/js/popper.min.js}"></script>
+<script src="../assets/js/bootstrap.min.js" th:href="@{assets/js/bootstrap.min.js}"></script>
+<script src="../assets/js/metisMenu.min.js" th:href="@{assets/js/metisMenu.min.js}"></script>
+<script src="../assets/js/waves.js" th:href="@{assets/js/waves.js}"></script>
+<script src="../assets/js/jquery.slimscroll.js" th:href="@{assets/js/jquery.slimscroll.js}"></script>
+<script src="plugins/waypoints/lib/jquery.waypoints.min.js" th:href="@{plugins/waypoints/lib/jquery.waypoints.min.js}"></script>
+<script src="plugins/counterup/jquery.counterup.min.js" th:href="@{plugins/counterup/jquery.counterup.min.js}"></script>
+
+<!-- Chart JS -->
+<script src="plugins/chart.js/chart.bundle.js" th:href="@{plugins/chart.js/chart.bundle.js}"></script>
+
+<!-- init dashboard -->
+
+
+<!-- App js -->
+<script src="../assets/js/jquery.core.js" th:href="@{assets/js/jquery.core.js}"></script>
+<script src="../assets/js/jquery.app.js" th:href="@{assets/js/jquery.app.js}"></script>
+
+
+<script>
+    window.onload=function(){
+        function getbar() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/hyproreport',
+                dataType: 'json',
+                success: function (result) {
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChart1.setOption(
+                        option = {
+                            // legend: {//图例
+                            //     // data: ['前期工作事项'],//与series的name对应
+                            //     // left: 'center',//图例的位置，可以用像素，可以用百分比，也可以用center，right等
+                            //     // top: 12.5,//图例的位置
+                            //     // itemWidth: 50,//图例图标的宽
+                            //     // itemHeight: 20,//图例图标的高
+                            //     // textStyle: {
+                            //     //     color: '#878787',//值的具体的颜色
+                            //     // }
+                            // },
+                            grid: {
+                                left: '10%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: {show: true},
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {
+                                        show: true,
+                                        type: ['pie', 'funnel']
+                                    },
+                                    // restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            xAxis: {//x轴
+                                type: 'category',
+                                data: [result[0].name,result[1].name,result[2].name,result[3].name,result[4].name],//x轴的数据
+                                splitLine: {show: false},//去除网格分割线
+                                // splitArea: {show: true},//保留网格区域
+                                axisLine: {//坐标线
+                                    lineStyle: {
+                                        type: 'solid',
+                                        color: '#d8d8d8',//轴线的颜色
+                                        width:'1'//坐标线的宽度
+                                    }
+                                },
+                                axisTick: {//刻度
+                                    show: false//不显示刻度线
+                                },
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#878787',//坐标值的具体的颜色
+                                    }
+                                },
+                                splitLine: {
+                                    show: false//去掉分割线
+                                },
+                            },
+                            backgroundColor: '#fff',//图得背景色
+                            yAxis: {
+                                // name: '个数',//轴的名字，默认位置在y轴上方显示
+                                // max:6,//最大刻度如何修改为max？？？？原来注释到这两行就可以自动确定最大值
+                                type: 'value',
+                                axisLine: {//线
+                                    show: false
+                                },
+                                axisTick: {//刻度
+                                    show: false
+                                },
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#878787',//坐标值得具体的颜色
+                                    }
+                                },
+                                minInterval: 1,//标值的最小间隔
+                                splitLine: {
+                                    lineStyle: {
+                                        color: ['#f6f6f6'],//分割线的颜色
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: '前期工作事项数（个）',//每组数据的名字，与图例对应
+                                data: result,//数据
+                                type: 'bar',//柱状图
+                                itemStyle: {
+                                    normal: {
+
+                                        color: function (params) {
+                                            var colorList = [
+                                                '#c3b4df',
+                                                '#72ADFF',
+                                                '#E4EB9B',
+                                                '#FD6B71'];
+                                            return colorList[params.dataIndex]
+                                        },
+                                        label: {
+                                            show: true,//柱子上显示值
+                                            position: 'top',//值在柱子上方显示
+                                            textStyle: {
+                                                color: '#000000'//值得颜色
+                                            }
+                                        }
+                                    }
+                                },
+                                barWidth:35//设置柱子宽度，单位为px
+                            }],
+                        }
+
+
+
+                    );
+
+                }
+
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('echarts_1'));
+        getbar();
+
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        // myChart1.setOption(option);
+
+
+
+        // function getpie() {
+        //     $.ajax({
+        //         method: 'post',
+        //         data: {},
+        //         url: 'http://localhost:8080/hyproreply',
+        //         dataType: 'json',
+        //         success: function (result1) {
+        //             // var pieData = eval("("+result+")");
+        //             console.log(result1);
+        //             myChart2.setOption(
+        //                 option = {
+        //                     title: {
+        //                         text: '',
+        //                         subtext: '',
+        //                         left: 'center'
+        //                     },
+        //                     tooltip: {
+        //                         trigger: 'item',
+        //                         formatter: '{a} <br/>{b} : {c} ({d}%)'
+        //                     },
+        //                     legend: {
+        //                         left: 'center',
+        //                         top: 'bottom',
+        //                         data: [result1[0].name,result1[1].name,result1[2].name,result1[3].name]
+        //                     },
+        //                     toolbox: {
+        //                         show: true,
+        //                         feature: {
+        //                             mark: {show: true},
+        //                             dataView: {show: true, readOnly: false},
+        //                             magicType: {
+        //                                 show: true,
+        //                                 type: ['pie', 'funnel']
+        //                             },
+        //                             restore: {show: true},
+        //                             saveAsImage: {show: true}
+        //                         }
+        //                     },
+        //                     graphic:{            //echarts饼图中间放字
+        //                         type:'text',
+        //                         left:'center',
+        //                         top:'center',
+        //                         z:2,
+        //                         //  zlevel:10,
+        //                         style:{
+        //                             text:'用地批复状态',
+        //                             textAlign:'center',
+        //                             fill:'#000',
+        //                             font:' 22px 微软雅黑 '
+        //                         },
+        //                     },
+        //                     series: [
+        //                         {
+        //                             name: '',
+        //                             type: 'pie',
+        //                             radius: [100, 150],
+        //                             center: ['50%', '50%'],
+        //                             roseType: 'area',
+        //                             itemStyle : {
+        //                                 normal: {
+        //
+        //                                     label: {                 //指示到模块的标签文字
+        //                                         show: true,
+        //                                         color:'black',
+        //                                         formatter: '{b} : {c} \n ({d}%)'
+        //                                     },
+        //                                     labelLine: {             //指示到模块的标签线
+        //                                         show: true,
+        //
+        //                                     }
+        //                                 },
+        //                             },
+        //                             color: ['#fad797','#59ccf7','#c3b4df'], //颜色将根据饼图的区域个数循环
+        //                             data: result1
+        //                         }
+        //                     ]
+        //                 }
+        //
+        //
+        //
+        //
+        //             );
+        //
+        //         }
+        //
+        //     })
+        // }
+        // // 基于准备好的dom，初始化echarts实例
+        // var myChart2 = echarts.init(document.getElementById('echarts_2'));
+        // getpie();
+
+
+        function get3() {
+            $.ajax({
+                method: 'post',
+                data: {},
+                url: 'http://localhost:8080/hyquesstaus',
+                dataType: 'json',
+                success: function (result) {
+                    // var pieData = eval("("+result+")");
+                    console.log(result);
+                    myChart3.setOption(
+                        option = {
+                            // legend: {//图例
+                            //     data: ['前期工作事项'],//与series的name对应
+                            //     left: 'center',//图例的位置，可以用像素，可以用百分比，也可以用center，right等
+                            //     top: 12.5,//图例的位置
+                            //     itemWidth: 50,//图例图标的宽
+                            //     itemHeight: 20,//图例图标的高
+                            //     textStyle: {
+                            //         color: '#878787',//值的具体的颜色
+                            //     }
+                            // },
+                            legend: {
+                                left: 'center',
+                                top: 'bottom',
+                                data: [result[0].name,result[1].name,result[2].name,result[3].name]
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: {show: true},
+                                    dataView: {show: true, readOnly: false},
+                                    magicType: {
+                                        show: true,
+                                        type: ['pie', 'funnel']
+                                    },
+                                    // restore: {show: true},
+                                    saveAsImage: {show: true}
+                                }
+                            },
+                            xAxis: {//x轴
+                                type: 'category',
+                                data: ["已申请","未处理","已处理","结项"],//x轴的数据
+                                splitLine: {show: false},//去除网格分割线
+                                // splitArea: {show: true},//保留网格区域
+                                axisLine: {//坐标线
+                                    lineStyle: {
+                                        type: 'solid',
+                                        color: '#d8d8d8',//轴线的颜色
+                                        width:'1'//坐标线的宽度
+                                    }
+                                },
+                                axisTick: {//刻度
+                                    show: false//不显示刻度线
+                                },
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#878787',//坐标值的具体的颜色
+                                    }
+                                },
+                                splitLine: {
+                                    show: false//去掉分割线
+                                },
+                            },
+                            backgroundColor: '#fff',//图得背景色
+                            yAxis: {
+                                name: '问题数（个）',//轴的名字，默认位置在y轴上方显示
+                                // max:6,//最大刻度如何修改为max？？？？原来注释到这两行就可以自动确定最大值
+                                type: 'value',
+                                axisLine: {//线
+                                    show: false
+                                },
+                                axisTick: {//刻度
+                                    show: false
+                                },
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#878787',//坐标值得具体的颜色
+                                    }
+                                },
+                                minInterval: 1,//标值的最小间隔
+                                splitLine: {
+                                    lineStyle: {
+                                        color: ['#f6f6f6'],//分割线的颜色
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: '前期工作事项填报状态',//每组数据的名字，与图例对应
+                                data: result,//数据
+                                type: 'bar',//柱状图
+                                itemStyle: {
+                                    normal: {
+
+                                        color: function (params) {
+                                            var colorList = [
+                                                '#c3b4df',
+                                                "#72ADFF",
+                                                "#3CEEC6",
+                                                "#8AB0D3"];
+                                            return colorList[params.dataIndex]
+                                        },
+                                        label: {
+                                            show: true,//柱子上显示值
+                                            position: 'top',//值在柱子上方显示
+                                            textStyle: {
+                                                color: '#000000'//值得颜色
+                                            }
+                                        }
+                                    }
+                                },
+                                barWidth:35//设置柱子宽度，单位为px
+                            }],
+                        }
+
+
+
+                    );
+
+                }
+
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart3 = echarts.init(document.getElementById('echarts_3'),'macarons');
+        get3();
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

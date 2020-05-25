@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/asset?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  mvc:
+    date-format: yyyy-MM-dd
+mybatis:
+  type-aliases-package: com.example.assets.entity
+  configuration:
+    map-underscore-to-camel-case: true
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

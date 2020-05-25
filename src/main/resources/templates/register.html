@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>后台注册</title>
+    <meta name="author" content="DeathGhost" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/look.css" th:href="@{assets/css/look.css}" />
+
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="stylesheet" charset="UTF-8" href="css/reset.css" th:href="@{assets/css/reset.css}">
+    <link rel="stylesheet" charset="utf-8" href="css/web_pop.css" th:href="@{assets/css/web_pop.css}">
+    <link rel="stylesheet" charset="UTF-8" href="css/login.css" th:href="@{assets/css/login.css}">
+    <style>
+        body{height:100%;background: #5884d4;overflow:hidden;}
+        canvas{z-index:-1;position:absolute;}
+    </style>
+    <script src="../assets/js/jquery.js" th:href="@{assets/js/jquery.js}"></script>
+    <script src="../assets/js/verificationNumbers.js" th:href="@{assets/js/verificationNumbers.js}"></script>
+    <script src="../assets/js/Particleground.js" th:href="@{assets/js/Particleground.js}"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js" th:href="@{assets/js/jquery.min.js}"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/jquery.form.js" th:href="@{assets/js/jquery.form.js}"></script>
+    <script type="text/javascript" charset="utf-8" src="js/layer.js" th:href="@{assets/js/layer.js}"></script>
+    <script type="text/javascript" charset="utf-8" src="js/web_method/method.js~v=2" th:href="@{assets/js/web_method/method.js~v=2}"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/login_register/user_register.js~v=10" th:href="@{assets/js/user_register.js~v=10}"></script>
+    <script>
+        $(document).ready(function() {
+            //粒子背景特效
+            $('body').particleground({
+                dotColor: 'rgba(225,255,225,0.4)',
+                lineColor: 'rgba(225,255,225,0.4)'
+            });
+            //验证码
+            createCode();
+            //测试提交，对接程序删除即可
+            $(".submit_btn").click(function(){
+                location.href="javascrpt:;"/*tpa=http://***index-fr.html*/;
+            });
+        });
+    </script>
+</head>
+<body>
+<form action="#" method="post" th:action="@{/register}" th:object="${user}">
+    <dl class="admin_login">
+        <dt>
+            <strong>重点项目库</strong>
+            <em>Important Project</em>
+        </dt>
+        <dd class="mail_icon">
+            <input type="email" th:field="*{email}" placeholder="邮箱" class="login_txtbx"  />
+        </dd>
+        <dd class="user_icon">
+            <input type="text" th:field="*{username}" placeholder="用户名" class="login_txtbx" />
+        </dd>
+
+        <dd class="pwd_icon">
+            <input type="password" th:field="*{password}" placeholder="密码" class="login_txtbx" />
+        </dd>
+        <dd class="val_icon">
+            <select placeholder="用户类型" th:field="*{role}" class="login_txtbx" id="role" style="height:44px;line-height:26px;padding:8px 5%;width:100%;" >
+                <option value=""></option>
+                <option value="faren">项目（法人）单位</option>
+                <option value="fagai">发改部门</option>
+                <option value="hangye">各行业主管部门</option>
+            </select>
+        </dd>
+        <!--<dd class="val_icon">-->
+        <!--<div class="checkcode">-->
+        <!--<input type="text" id="J_codetext" placeholder="验证码" maxlength="4" class="login_txtbx">-->
+        <!--<canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>-->
+        <!--</div>-->
+        <!--<input type="button" value="验证码核验" class="ver_btn" onClick="validate();">-->
+        <!--</dd>-->
+        <dd>
+            <input type="submit" value="注册" class="submit_btn1" />
+            <input type="button" value="登录" class="submit_btn2" onclick="login()"/>
+        </dd>
+    </dl>
+</form>
+
+<script type="text/javascript">
+    function login() {
+        window.location.href="login";
+    }
+</script>
+</body>
+
+</html>

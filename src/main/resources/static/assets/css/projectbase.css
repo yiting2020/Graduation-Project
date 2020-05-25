@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+	width:100%;	
+	
+	}
+body{
+	margin:0px;
+	padding:0px;
+	font-family:microsoft yahei,Verdana,simsun, Geneva, sans-serif;
+	line-height:200%;
+	font-size:1em;
+	color:#000000;
+	width:100%;
+	
+	}
+font,span,p{
+	font-size:1em;
+	}
+div,ul,li,p,table,img,dl,dd,dt,form{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	border:0px;
+	}
+h1,h2,h3,h4,h5,h6{
+	margin:0px;
+	padding:0px;
+	font-size:1em;
+	}
+img,input,select{
+	vertical-align:middle;
+	}
+table{
+	border-collapse:collapse;
+	}
+	/*
+a,a:link,a:visited{
+	color:#336699;
+	text-decoration:none;
+	cursor:pointer;
+	}
+	*/
+a:hover{
+	color:#62a3db;
+	text-decoration:underline;
+	cursor:pointer;
+	}
+
+.r{
+	float:right;
+	}
+.l{
+	float:left;
+	}
+.clear{
+	clear:both;
+	}
+
+/*input*/
+input[type=text]{
+	height:20px;
+	line-height:20px;
+	color:#585858;
+	text-indent:4px;
+	border:1px solid #95B8E7;
+	padding: 0 4px;
+	width:250px;
+	}
+select{
+	width:80px;
+	height:24px;
+	line-height:24px;
+	border:1px solid #93a8b9;
+}
+textarea{
+	text-indent:4px;
+	border:1px solid #93a8b9;
+	overflow:auto;
+}
+
+div.loading-panel {
+	position: absolute;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+    z-index: 10000;
+    display: none;
+}
+
+div.mask-panel {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    bottom: 0px;
+    background-color: #000000;
+    opacity: .4;
+    filter: Alpha(opacity=40);
+}
+
+div.loading-content-panel {
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    bottom: 0px;
+}
+
+.loading-info-panel {
+	position: absolute;
+	background-color: transparent;
+	width: 240px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -120px;
+}
+
+div.loading-info {
+	padding: 20px;
+}
+
+.loading-image {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	vertical-align: top;
+	background-image: url(../images/loading.gif);
+}
+
+.loading-text {
+	font-size: 2em;
+	color: #FFFFFF;
+	line-height: 32px;
+	margin-left: 10px;
+}
+
+.cancel-user-select {
+	-ms-user-select: none;
+	–webkit-user-select:none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.fiexdDialog {
+    position: fixed !important;
+    z-index: 999999 !important;
+}

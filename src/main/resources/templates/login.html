@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <meta charset="utf-8"/>
+  <title>后台登录</title>
+  <meta name="author" content="DeathGhost" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/look.css" th:href="@{assets/css/look.css}" />
+ <style>
+  body{height:100%;background: #5884d4;overflow:hidden;}
+  canvas{z-index:-1;position:absolute;}
+ </style>
+ <script src="../assets/js/jquery.js" th:href="@{assets/js/jquery.js}"></script>
+ <script src="../assets/js/verificationNumbers.js" th:href="@{assets/js/verificationNumbers.js}"></script>
+ <script src="../assets/js/Particleground.js" th:href="@{assets/js/Particleground.js}"></script>
+ <script>
+  $(document).ready(function() {
+    //粒子背景特效
+    $('body').particleground({
+      dotColor: 'rgba(225,255,225,0.4)',
+      lineColor: 'rgba(225,255,225,0.4)'
+    });
+    //验证码
+    createCode();
+    //测试提交，对接程序删除即可
+    $(".submit_btn").click(function(){
+        location.href="javascrpt:;"/*tpa=http://***index-fr.html*/;
+        });
+  });
+ </script>
+ </head>
+ <body>
+  <form method="post" action="#" th:action="@{/login}" th:object="${user}">
+   <dl class="admin_login" style="padding-bottom: 0px">
+    <dt>
+     <strong>重点项目库</strong>
+     <em>Important Project</em>
+    </dt>
+    <dd class="user_icon">
+     <input type="email" th:field="*{email}" placeholder="邮箱" class="login_txtbx"/>
+    </dd>
+    <dd class="pwd_icon">
+     <input type="password" th:field="*{password}" placeholder="密码" class="login_txtbx"/>
+    </dd>
+    <!--<dd class="val_icon">-->
+     <!--<div class="checkcode">-->
+      <!--<input type="text" id="J_codetext" placeholder="验证码" maxlength="4" class="login_txtbx">-->
+      <!--<canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>-->
+     <!--</div>-->
+     <!--<input type="button" value="验证码核验" class="ver_btn" onClick="validate();">-->
+    <!--</dd>-->
+    <dd style="margin-top: 10px">
+     <input type="submit" value="登录" class="submit_btn1"/>
+     <input type="button" value="注册" class="submit_btn2" onclick="reg()"/>
+    </dd>
+    <dd>
+     <!--<p onclick="forget()">忘记密码</p>-->
+     <p th:text="${errorMessage}"></p>
+    </dd>
+    <!--<dd><p th:text="${errorMessage}"></p></dd>-->
+   </dl>
+  </form>
+ </body>
+</html>
+<script type="text/javascript">
+  function reg() {
+      window.location.href="register";
+  }
+  function forget() {
+    window.location.href="/forget";
+  }
+</script>
